@@ -19,14 +19,14 @@ struct ActivateView: View {
                 HStack {
                     Text(String.activate)
                         .foregroundColor(.gray)
-                        .font(.system(size: 60 , weight: .bold))
+                        .font(.system(size: 50 , weight: .bold))
                         .padding([.horizontal,.top], 20)
                     Spacer()
                 }
                 HStack {
                     Text(String.account)
                         .foregroundColor(.gray)
-                        .font(.system(size: 60 , weight: .bold))
+                        .font(.system(size: 50 , weight: .bold))
                         .padding([.horizontal], 20)
                     Spacer()
                 }

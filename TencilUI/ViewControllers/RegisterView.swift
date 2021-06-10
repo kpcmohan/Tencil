@@ -21,7 +21,7 @@ struct RegisterView: View {
                 HStack {
                     Text(String.register)
                         .foregroundColor(.gray)
-                        .font(.system(size: 60 , weight: .bold))
+                        .font(.system(size: 50 , weight: .bold))
                         .padding([.horizontal,.top], 20)
                     Spacer()
                 }
