@@ -20,7 +20,7 @@ struct StaticCardView: View {
         }.frame(width: 150, height: 250, alignment: .center)
         .cornerRadius(20)
         .padding()
-        .background(Color("StaticHCVBG").opacity(0.5))
+        .background(Color.staticCVBGC.opacity(0.5))
     }
 }
 

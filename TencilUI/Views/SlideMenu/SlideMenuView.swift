@@ -11,7 +11,7 @@ struct SlideMenuView: View {
     @Binding var isShowing : Bool
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("SlideMenuColour"), Color.white]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color.slideMenuC, Color.white]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack(alignment : .leading){
                 SlideMenuHeader(isShowing: $isShowing)

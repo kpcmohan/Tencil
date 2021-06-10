@@ -22,6 +22,7 @@
 		9D674D102672555D006A9F04 /* SlideMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D0F2672555D006A9F04 /* SlideMenuItems.swift */; };
 		9D674D12267283FA006A9F04 /* StaticCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D11267283FA006A9F04 /* StaticCardView.swift */; };
 		9D674D142672846A006A9F04 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D132672846A006A9F04 /* HorizontalCardView.swift */; };
+		9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D1626728CA6006A9F04 /* Color+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		9D674D0F2672555D006A9F04 /* SlideMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuItems.swift; sourceTree = "<group>"; };
 		9D674D11267283FA006A9F04 /* StaticCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCardView.swift; sourceTree = "<group>"; };
 		9D674D132672846A006A9F04 /* HorizontalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
+		9D674D1626728CA6006A9F04 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +76,10 @@
 		9D3011E526713A5600C41379 /* TencilUI */ = {
 			isa = PBXGroup;
 			children = (
+				9D674D1526728C67006A9F04 /* Extensions */,
 				9D674D0326722418006A9F04 /* Views */,
-				9D3011E626713A5600C41379 /* TencilUIApp.swift */,
 				9D674D0626723AD7006A9F04 /* ViewControllers */,
+				9D3011E626713A5600C41379 /* TencilUIApp.swift */,
 				9D3011EA26713A5900C41379 /* Assets.xcassets */,
 				9D3011EF26713A5900C41379 /* Info.plist */,
 				9D3011EC26713A5900C41379 /* Preview Content */,
@@ -124,6 +127,14 @@
 				9D674D0F2672555D006A9F04 /* SlideMenuItems.swift */,
 			);
 			path = SlideMenu;
+			sourceTree = "<group>";
+		};
+		9D674D1526728C67006A9F04 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9D674D1626728CA6006A9F04 /* Color+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D674D0526722426006A9F04 /* CardView.swift in Sources */,
+				9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */,
 				9D3011F82671575600C41379 /* LoginView.swift in Sources */,
 				9D674D0826723B34006A9F04 /* ForgotPasswordView.swift in Sources */,
 				9D674CFE26720595006A9F04 /* RegisterView.swift in Sources */,

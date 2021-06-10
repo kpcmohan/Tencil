@@ -120,7 +120,7 @@ struct CustomButton : View {
                 .bold()
                 .foregroundColor(.white)
                 .frame(width: width, height: 50)
-                .background(Color("ButtonBG"))
+                .background(Color.buttonBGC)
     }
     
 }

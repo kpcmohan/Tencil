@@ -11,7 +11,7 @@ struct HorizontalCardView: View {
     @State var title : String
     @State var width : CGFloat
     @State var showImage : Bool
-    @State var bgColor : String
+    @State var bgColor : Color
     
     var body: some View {
         VStack(alignment : .center){
@@ -37,7 +37,7 @@ struct HorizontalCardView: View {
         }.frame(width: width, height: 180, alignment: .center)
         .cornerRadius(20)
         .padding()
-        .background(Color(bgColor))
+        .background(bgColor)
         
         
     }
@@ -45,6 +45,6 @@ struct HorizontalCardView: View {
 
 struct HorizontalCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCardView(title: "Title", width: 320, showImage: true, bgColor: "HCardBG")
+        HorizontalCardView(title: "Title", width: 320, showImage: true, bgColor: Color.buttonBGC)
     }
 }

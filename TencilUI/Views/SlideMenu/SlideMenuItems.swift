@@ -41,7 +41,7 @@ struct TitleText: View {
     @State var title : String
     var body: some View {
         Text(title)
-            .foregroundColor(Color("TitleFC"))
+            .foregroundColor(Color.titleFC)
             .font(.system(size: 20, weight: .semibold))
             .padding(.top,16)
     }
