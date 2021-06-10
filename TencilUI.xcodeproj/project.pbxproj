@@ -23,6 +23,8 @@
 		9D674D12267283FA006A9F04 /* StaticCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D11267283FA006A9F04 /* StaticCardView.swift */; };
 		9D674D142672846A006A9F04 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D132672846A006A9F04 /* HorizontalCardView.swift */; };
 		9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D1626728CA6006A9F04 /* Color+Ext.swift */; };
+		9D674D1926729760006A9F04 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D1826729760006A9F04 /* String+Ext.swift */; };
+		9D674D1B2672B021006A9F04 /* Image+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D674D1A2672B021006A9F04 /* Image+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		9D674D11267283FA006A9F04 /* StaticCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCardView.swift; sourceTree = "<group>"; };
 		9D674D132672846A006A9F04 /* HorizontalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
 		9D674D1626728CA6006A9F04 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		9D674D1826729760006A9F04 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		9D674D1A2672B021006A9F04 /* Image+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				9D674D1626728CA6006A9F04 /* Color+Ext.swift */,
+				9D674D1826729760006A9F04 /* String+Ext.swift */,
+				9D674D1A2672B021006A9F04 /* Image+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,11 +215,13 @@
 				9D674D0526722426006A9F04 /* CardView.swift in Sources */,
 				9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */,
 				9D3011F82671575600C41379 /* LoginView.swift in Sources */,
+				9D674D1926729760006A9F04 /* String+Ext.swift in Sources */,
 				9D674D0826723B34006A9F04 /* ForgotPasswordView.swift in Sources */,
 				9D674CFE26720595006A9F04 /* RegisterView.swift in Sources */,
 				9D674D12267283FA006A9F04 /* StaticCardView.swift in Sources */,
 				9D3011E726713A5600C41379 /* TencilUIApp.swift in Sources */,
 				9D674D0E2672554C006A9F04 /* SlideMenuHeader.swift in Sources */,
+				9D674D1B2672B021006A9F04 /* Image+Ext.swift in Sources */,
 				9D674D0226720F63006A9F04 /* HomeView.swift in Sources */,
 				9D674D102672555D006A9F04 /* SlideMenuItems.swift in Sources */,
 				9D3011F626713AE500C41379 /* LaunchScreen.swift in Sources */,

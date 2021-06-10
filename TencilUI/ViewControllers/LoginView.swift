@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by  on 10/06/21.
 //
 
 import SwiftUI
@@ -19,13 +19,13 @@ struct LoginView: View {
             GeometryReader { geometry in
                 VStack{
                     Spacer()
-                    Image("logo")
+                    Image.logo
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 120, height: 120)
                         .padding()
-                    CustomTextField(value: $email, text: "Email", imageName: "person")
-                    CustomPasswordField(value: $password, text: "Password", imageName: "lock")
+                    CustomTextField(value: $email, text: .email, image: .person)
+                    CustomPasswordField(value: $password, text: .password, image: .lock)
                         .fullScreenCover(isPresented: $homeView, content: {
                             HomeView()
                         })
@@ -41,13 +41,13 @@ struct LoginView: View {
                     Button(action: {
                         homeView.toggle()
                     }, label: {
-                        CustomButton(width: geometry.size.width - 30, title: "Login")
+                        CustomButton(width: geometry.size.width - 30, title: .login)
                     })
                         .padding(.bottom)
                     Button(action: {
                         forgotPasswordView.toggle()
                     }, label: {
-                        Text("Forgot Password?")
+                        Text(String.forgotPassword)
                             .font(.title3)
                             .foregroundColor(.gray)
                     })
@@ -56,13 +56,13 @@ struct LoginView: View {
                         Button(action: {
                             registerView.toggle()
                         }, label: {
-                            CustomButton(width: 150, title: "REGISTER")
+                            CustomButton(width: 150, title: .register.uppercased())
                         })
                         .padding()
                         Button(action: {
                             activateView.toggle()
                         }, label: {
-                            CustomButton(width: 150, title: "ACTIVATE")
+                            CustomButton(width: 150, title: .activate.uppercased())
                         })
                         .padding()
                     }
@@ -75,11 +75,11 @@ struct LoginView: View {
 struct CustomTextField : View {
     @Binding var value : String
     @State var text : String
-    @State var imageName : String
+    @State var image : Image
     var body : some View{
         HStack {
             TextField(text, text: $value)
-            Image(systemName: imageName)
+            image
         }.padding()
         .background(
             RoundedRectangle(cornerRadius: 10)
@@ -93,11 +93,11 @@ struct CustomTextField : View {
 struct CustomPasswordField : View {
     @Binding var value : String
     @State var text : String
-    @State var imageName : String
+    @State var image : Image
     var body : some View{
         HStack {
             SecureField(text, text: $value)
-            Image(systemName: imageName)
+            image
         }.padding()
        // .background()
         .background(

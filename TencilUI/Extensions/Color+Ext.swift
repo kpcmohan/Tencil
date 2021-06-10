@@ -2,7 +2,7 @@
 //  Color+Ext.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by on 10/06/21.
 //
 
 import SwiftUI

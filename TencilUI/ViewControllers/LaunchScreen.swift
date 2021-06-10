@@ -2,7 +2,7 @@
 //  LaunchScreen.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 09/06/21.
+//  Created by  on 09/06/21.
 //
 
 import SwiftUI
@@ -17,7 +17,7 @@ struct LaunchScreen: View {
                 VStack{
                     Spacer()
                     
-                    Image("launchImage")
+                    Image.launchImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding()
@@ -27,8 +27,8 @@ struct LaunchScreen: View {
                             .speed(0.5)
                         )
                     Spacer()
-                    Text("Powered by Providence Web Services")
-                    Text("version 1.1.19")
+                    Text(String.poweredBy)
+                    Text(String.version)
                         .padding(1)
                 }
             }.fullScreenCover(isPresented: $isActive, content: {

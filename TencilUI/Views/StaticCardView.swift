@@ -2,7 +2,7 @@
 //  StaticCardView.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by  on 10/06/21.
 //
 
 import SwiftUI
@@ -26,6 +26,6 @@ struct StaticCardView: View {
 
 struct StaticCardView_Previews: PreviewProvider {
     static var previews: some View {
-        StaticCardView(title: "Test", description: "Testing ")
+        StaticCardView(title: .privacyPolicy, description: .privacyPolicy)
     }
 }

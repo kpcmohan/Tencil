@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by  on 10/06/21.
 //
 
 import SwiftUI
@@ -26,7 +26,7 @@ struct HomeView: View {
                                                     }
                                                     
                                                 }, label: {
-                                                    Image(systemName: "list.dash")
+                                                    Image.menu
                                                         .resizable()
                                                         .frame(width: 20, height: 20, alignment: .center)
                                                         .foregroundColor(.black)
@@ -52,35 +52,35 @@ struct HomeViewF: View {
         ZStack {
             Color.white
             ScrollView(showsIndicators: false ){
-                Text("Welcom to Tencil")
+                Text(String.welcomeTencil)
                     .foregroundColor(.black)
                     .font(.system(size: 30 , weight: .semibold))
                     .padding([.horizontal], 20)
-                Text("We Recommend")
+                Text(String.weRecommend)
                     .foregroundColor(.black)
                     .font(.system(size: 25 , weight: .semibold))
                     .padding([.horizontal,.top,.bottom], 20)
-                HorizontalCardView(title: "Provide", width: 350, showImage: true, bgColor: Color.horizontalCBC)
+                HorizontalCardView(title: .provide, width: 350, showImage: true, bgColor: Color.horizontalCBC)
                     .shadow(radius: 5)
                 ScrollView(.horizontal, showsIndicators: false, content: {
                     HStack {
-                        StaticCardView(title: "ALL FETURED COMPANIES", description: "All the fetured companes have a top demand in your area!")
+                        StaticCardView(title: .allFeaturedCompanies, description: .allFeaturedCompaniesDescription)
                             .padding()
                             .shadow(radius: 1)
                         ForEach (0..<5){i in
-                            CardView(image: "person", title: "Amazon", description: "Testing description for demo")
+                            CardView(image: Image.person, title: .provide, description: .allFeaturedCompaniesDescription)
                                 .padding()
                                 .shadow(radius: 5)
                         }
                     }.padding()
                 })
                 HStack{
-                    Text("CATEGORIES")
+                    Text(String.categories.uppercased())
                         .font(.system(size: 30,weight: .bold))
                         .padding()
                     Spacer()
                 }
-                HorizontalCardView(title: "CODING", width: 330, showImage: false, bgColor: Color.buttonBGC)
+                HorizontalCardView(title: .coding.uppercased(), width: 330, showImage: false, bgColor: Color.buttonBGC)
                     .shadow(radius: 5)
                 
             }

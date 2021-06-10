@@ -2,7 +2,7 @@
 //  SlideMenuHeader.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by  on 10/06/21.
 //
 
 import SwiftUI
@@ -17,16 +17,16 @@ struct SlideMenuHeader: View {
                     isShowing.toggle()
                 }
             }, label: {
-                Image(systemName: "xmark")
+                Image.close
                     .frame(width: 32, height: 32, alignment: .center)
                     .foregroundColor(.white)
                     .padding()
             })
             VStack(alignment : .leading) {
-                Text("Welcome To Tencil")
+                Text(String.welcomeTencil)
                     .font(.system(size: 30,weight: .bold))
                     .padding(.horizontal,16)
-                Text("Control Your Future")
+                Text(String.countrolFuture)
                     .font(.system(size: 20,weight: .medium))
                     .padding([.horizontal],16)
                     .padding(.top,5)

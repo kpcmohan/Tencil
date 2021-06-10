@@ -2,7 +2,7 @@
 //  SlideMenuItems.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by  on 10/06/21.
 //
 
 import SwiftUI
@@ -11,24 +11,24 @@ struct SlideMenuItems: View {
     var body: some View {
         ScrollView{
             VStack(alignment : .leading){
-               TitleText(title: "Share")
-               ItemView(title: "Share", image: "arrowshape.turn.up.forward")
+                TitleText(title: .share)
+                ItemView(title: .share, image: .share)
                Divider()
                 
-                TitleText(title: "Legal")
-                ItemView(title: "Privacy Policy", image: "lock.doc")
+                TitleText(title: .leagal)
+                ItemView(title: .privacyPolicy, image: .privacyPolicy)
                 Divider()
                 
                 Group{
-                    TitleText(title: "Profile")
-                    ItemView(title: "Profile", image: "person")
-                    ItemView(title: "Questions", image: "questionmark.circle")
-                    ItemView(title: "Log Out", image: "arrow.backward")
+                    TitleText(title: .profile)
+                    ItemView(title: .profile, image: .person)
+                    ItemView(title: .questions, image: .question)
+                    ItemView(title: .logOut, image: .logOut)
                     Divider()
                 }
                 Group{
-                    TitleText(title: "Technical")
-                    ItemView(title: "Status Page", image: "gearshape")
+                    TitleText(title: .technical)
+                    ItemView(title: .statusPage, image: .gear)
                     Divider()
                 }
             }
@@ -48,11 +48,11 @@ struct TitleText: View {
 }
 struct ItemView: View {
     @State var title : String
-    @State var image : String
+    @State var image : Image
     
     var body: some View {
         HStack{
-            Image(systemName: image)
+            image
             Text(title)
         }.padding(.top,5)
     }

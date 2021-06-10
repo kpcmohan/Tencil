@@ -2,7 +2,7 @@
 //  HorizontalCardView.swift
 //  TencilUI
 //
-//  Created by Manu Puthoor on 10/06/21.
+//  Created by  on 10/06/21.
 //
 
 import SwiftUI
@@ -24,7 +24,7 @@ struct HorizontalCardView: View {
                 Spacer()
             }
             if showImage{
-                Image(systemName: "person")
+                Image.person
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 80, height: 80, alignment: .center)
@@ -45,6 +45,6 @@ struct HorizontalCardView: View {
 
 struct HorizontalCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCardView(title: "Title", width: 320, showImage: true, bgColor: Color.buttonBGC)
+        HorizontalCardView(title: .profile, width: 320, showImage: true, bgColor: Color.buttonBGC)
     }
 }
