@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-
+import URLImage
 struct HorizontalCardView: View {
     @State var title : String
     @State var width : CGFloat
     @State var showImage : Bool
     @State var bgColor : Color
+    @State var imgURL : String
     
     var body: some View {
         VStack(alignment : .center){
@@ -24,12 +25,16 @@ struct HorizontalCardView: View {
                 Spacer()
             }
             if showImage{
-                Image.person
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 80, height: 80, alignment: .center)
-                    .foregroundColor(.black)
-                    .font(.system(size: 16,weight: .thin))
+                if let url = URL(string: imgURL){
+                    URLImage(url) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 125, height: 125, alignment: .center)
+                            .foregroundColor(.white)
+                            .font(.system(size: 16,weight: .thin))
+                    }
+                }
             }
            
                 
@@ -45,6 +50,6 @@ struct HorizontalCardView: View {
 
 struct HorizontalCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCardView(title: .profile, width: 320, showImage: true, bgColor: Color.buttonBGC)
+        HorizontalCardView(title: .profile, width: 320, showImage: true, bgColor: Color.buttonBGC, imgURL: "")
     }
 }

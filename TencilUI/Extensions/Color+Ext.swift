@@ -14,6 +14,7 @@ extension Color{
     static let slideMenuC = Color("SlideMenuColour")
     static let staticCVBGC = Color("StaticHCVBG")
     static let titleFC = Color("TitleFC")
+    static let buttonColor = Color("ButtonColor")
     
     
     

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     @State var isShowing = false
+    @State var categories = [Category]()
+    @State var business = [Business]()
     var body: some View {
             NavigationView{
                 ZStack {
                     if isShowing{
                         SlideMenuView(isShowing: $isShowing)
                     }
-                    HomeViewF()
+                    HomeViewF(business: $business, categories: $categories)
                         .cornerRadius(isShowing ? 20 : 10)
                         .offset(x: isShowing ? 300 : 0, y: isShowing ? 44 : 0)
                         .scaleEffect(isShowing ? 0.8 : 1)
@@ -35,6 +37,14 @@ struct HomeView: View {
                         )
                 }
             }
+            .onAppear(){
+                Api().getBusiness { business in
+                    self.business = business.businesses
+                    Api().getCategories { categories in
+                        self.categories = categories.categories
+                    }
+                }
+            }
     }
 }
 
@@ -48,6 +58,9 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct HomeViewF: View {
+    @Binding var business : [Business]
+    @Binding var categories : [Category]
+    
     var body: some View {
         ZStack {
             Color.white
@@ -60,29 +73,55 @@ struct HomeViewF: View {
                     .foregroundColor(.black)
                     .font(.system(size: 25 , weight: .semibold))
                     .padding([.horizontal,.top,.bottom], 20)
-                HorizontalCardView(title: .provide, width: 350, showImage: true, bgColor: Color.horizontalCBC)
-                    .shadow(radius: 5)
+                
                 ScrollView(.horizontal, showsIndicators: false, content: {
-                    HStack {
-                        StaticCardView(title: .allFeaturedCompanies, description: .allFeaturedCompaniesDescription)
-                            .padding()
-                            .shadow(radius: 1)
-                        ForEach (0..<5){i in
-                            CardView(image: Image.person, title: .provide, description: .allFeaturedCompaniesDescription)
-                                .padding()
-                                .shadow(radius: 5)
+                    LazyHStack(alignment: .center, spacing: nil, pinnedViews: [], content: {
+                        ForEach(business) { bus in
+                            HorizontalCardView(title:bus.businessName, width: UIScreen.main.bounds.width * 0.85, showImage: true, bgColor: Color.horizontalCBC, imgURL: bus.businessImg)
+                                    .shadow(radius: 5)
                         }
-                    }.padding()
+                    })
                 })
+                .padding()
+                
+                
+                HStack {
+                    StaticCardView(title: .allFeaturedCompanies, description: .allFeaturedCompaniesDescription, width: UIScreen.main.bounds.width / 2.8)
+                        .padding([.vertical , .leading])
+                        .shadow(radius: 1)
+                    ScrollView(.horizontal, showsIndicators: false, content: {
+                        HStack {
+                            
+                            ForEach (business){bis in
+                                NavigationLink(destination: DetailsView(business: bis)){
+                                    CardView(imageURL: bis.businessImg, title: bis.businessName, description: bis.bdesc, width: UIScreen.main.bounds.width / 2.8)
+                                        .padding()
+                                        .shadow(radius: 5)
+                                }
+                                .foregroundColor(.black)
+                            }
+                        }.padding()
+                    })
+                }
                 HStack{
                     Text(String.categories.uppercased())
                         .font(.system(size: 30,weight: .bold))
                         .padding()
                     Spacer()
                 }
-                HorizontalCardView(title: .coding.uppercased(), width: 330, showImage: false, bgColor: Color.buttonBGC)
-                    .shadow(radius: 5)
                 
+                    ScrollView(.horizontal, showsIndicators: false, content: {
+                        HStack {
+                            ForEach (categories){ cat in
+                                HorizontalCardView(title: cat.name?.uppercased() ?? "", width: UIScreen.main.bounds.width * 0.85, showImage: false, bgColor: Color.buttonBGC, imgURL: "")
+                                .shadow(radius: 5)
+                                
+                            }
+                        }
+                    })
+                
+                    .padding()
+                    Spacer()
             }
         }
     }

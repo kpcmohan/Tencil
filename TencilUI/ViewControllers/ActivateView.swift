@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
-
+import PopupView
 struct ActivateView: View {
     @State var email = String()
     @State var activationCode = String()
-    
+    @State var isShowingPopUp = false
+    @State var isLoading = false
     @Binding var activateView : Bool
     var body: some View {
-        
+        ZStack{
         GeometryReader { geometry in
             VStack {
                 HStack {
@@ -44,7 +45,17 @@ struct ActivateView: View {
                 
                 
                 Button(action: {
-                    activateView.toggle()
+                    isLoading = true
+                    Api().activate(email: email, code: activationCode) { statusCode in
+                        isLoading = false
+                        if statusCode != 200{
+                            isShowingPopUp = true
+                        }else{
+                            isShowingPopUp = false
+                            activateView.toggle()
+                        }
+                    }
+                    
                 }, label: {
                     CustomButton(width: geometry.size.width - 30, title: .activate.uppercased())
                 })
@@ -57,7 +68,31 @@ struct ActivateView: View {
                 })
             }
         }
+            if isLoading{
+            LoaderView()
+            }
     }
+        .popup(isPresented: $isShowingPopUp, type: .floater(verticalPadding: 20), position: .top, animation: .easeIn, autohideIn: 3, dragToDismiss: true, closeOnTap: true, closeOnTapOutside: false) {
+            isShowingPopUp = false
+        } view: {
+            ZStack{
+                Color.primary
+                HStack{
+                    Image.warning
+                        .resizable()
+                        .frame(width: 25, height: 25, alignment: .center)
+                        .foregroundColor(.white)
+                    Text(String.somthingWentWrong)
+                        .foregroundColor(.white)
+                }
+            }
+            .frame(height: 80, alignment: .center)
+            .cornerRadius(10)
+            .padding()
+            
+        }
+    }
+    
 }
 
 struct ActivateView_Previews: PreviewProvider {

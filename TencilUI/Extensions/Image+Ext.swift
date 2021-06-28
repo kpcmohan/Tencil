@@ -22,6 +22,7 @@ extension Image{
     static let menu = Image(systemName: "list.dash")
     static let lockFill = Image(systemName: "lock.fill")
     static let back = Image(systemName: "chevron.left")
+    static let warning = Image(systemName: "exclamationmark.triangle.fill")
     
     static let launchImage = Image("launchImage")
     static let logo = Image("logo")
