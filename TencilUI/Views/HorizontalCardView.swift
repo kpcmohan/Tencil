@@ -33,6 +33,9 @@ struct HorizontalCardView: View {
                             .frame(width: 125, height: 125, alignment: .center)
                             .foregroundColor(.white)
                             .font(.system(size: 16,weight: .thin))
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+
                     }
                 }
             }
@@ -50,6 +53,6 @@ struct HorizontalCardView: View {
 
 struct HorizontalCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCardView(title: .profile, width: 320, showImage: true, bgColor: Color.buttonBGC, imgURL: "")
+        HorizontalCardView(title: .profile, width: 320, showImage: true, bgColor: Color.buttonBGC, imgURL: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg")
     }
 }

@@ -21,69 +21,69 @@ struct LoginView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                    VStack{
-                        Spacer()
-                        Image.logo
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
-                            .padding()
-                        CustomTextField(value: $email, text: .email, image: .person,keyBoardType: .emailAddress)
-                        CustomPasswordField(value: $password, text: .password, image: .lock)
-                            .fullScreenCover(isPresented: $homeView, content: {
-                                HomeView()
-                            })
-                            .fullScreenCover(isPresented: $registerView, content: {
-                                RegisterView(registerView: $registerView)
-                            })
-                            .fullScreenCover(isPresented: $activateView, content: {
-                                ActivateView(activateView: $activateView)
-                            })
-                            .fullScreenCover(isPresented: $forgotPasswordView, content: {
-                                ForgotPasswordView()
-                            })
-                        Button(action: {
-                            Common().dismissKeyboard()
-                            isLoading = true
-                            Api().login(email: email, password: password) { loginResponse in
-                                isLoading = false
-                                if loginResponse.userActive{
-                                    isShowingPopUp = false
-                                    homeView.toggle()
-                                }
-                                else{
-                                    isShowingPopUp = true
-                                }
+                VStack{
+                    Spacer()
+                    Image.logo
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120)
+                        .padding()
+                    CustomTextField(value: $email, text: .email, image: .person,keyBoardType: .emailAddress)
+                    CustomPasswordField(value: $password, text: .password, image: .lock)
+                        .fullScreenCover(isPresented: $homeView, content: {
+                            HomeView()
+                        })
+                        .fullScreenCover(isPresented: $registerView, content: {
+                            RegisterView(registerView: $registerView)
+                        })
+                        .fullScreenCover(isPresented: $activateView, content: {
+                            ActivateView(activateView: $activateView)
+                        })
+                        .fullScreenCover(isPresented: $forgotPasswordView, content: {
+                            ForgotPasswordView(forgotPasswordView: $forgotPasswordView)
+                        })
+                    Button(action: {
+                        Common().dismissKeyboard()
+                        isLoading = true
+                        Api().login(email: email, password: password) { loginResponse in
+                            isLoading = false
+                            if loginResponse.userActive{
+                                isShowingPopUp = false
+                                homeView.toggle()
                             }
-                            //homeView.toggle()
-                        }, label: {
-                            CustomButton(width: geometry.size.width - 30, title: .login)
-                        })
-                            .padding(.bottom)
-                        Button(action: {
-                            forgotPasswordView.toggle()
-                        }, label: {
-                            Text(String.forgotPassword)
-                                .font(.title3)
-                                .foregroundColor(.gray)
-                        })
-                        Spacer()
-                        HStack{
-                            Button(action: {
-                                registerView.toggle()
-                            }, label: {
-                                CustomButton(width: 150, title: .register.uppercased())
-                            })
-                            .padding()
-                            Button(action: {
-                                activateView.toggle()
-                            }, label: {
-                                CustomButton(width: 150, title: .activate.uppercased())
-                            })
-                            .padding()
+                            else{
+                                isShowingPopUp = true
+                            }
                         }
-                        
+                        //homeView.toggle()
+                    }, label: {
+                        CustomButton(width: geometry.size.width - 30, title: .login)
+                    })
+                    .padding(.bottom)
+                    Button(action: {
+                        forgotPasswordView.toggle()
+                    }, label: {
+                        Text(String.forgotPassword)
+                            .font(.title3)
+                            .foregroundColor(.gray)
+                    })
+                    Spacer()
+                    HStack{
+                        Button(action: {
+                            registerView.toggle()
+                        }, label: {
+                            CustomButton(width: 150, title: .register.uppercased())
+                        })
+                        .padding()
+                        Button(action: {
+                            activateView.toggle()
+                        }, label: {
+                            CustomButton(width: 150, title: .activate.uppercased())
+                        })
+                        .padding()
                     }
+                    
+                }
             }
             if isLoading{
                 LoaderView()
@@ -108,7 +108,7 @@ struct LoginView: View {
             .padding()
             
         }
-
+        
     }
 }
 
@@ -126,7 +126,7 @@ struct CustomTextField : View {
         }.padding()
         .background(
             RoundedRectangle(cornerRadius: 10)
-            .strokeBorder(Color.black)
+                .strokeBorder(Color.black)
         )
         .padding([.horizontal])
         .padding(.vertical, 5)
@@ -142,14 +142,14 @@ struct CustomPasswordField : View {
             SecureField(text, text: $value)
             image
         }.padding()
-       // .background()
+        // .background()
         .background(
             RoundedRectangle(cornerRadius: 10)
-            .strokeBorder(Color.black)
+                .strokeBorder(Color.black)
         )
         
         .padding([.horizontal,.bottom])
-
+        
     }
     
 }
@@ -158,18 +158,18 @@ struct CustomButton : View {
     @State var title : String
     var body : some View{
         
-            Text(title)
-                .font(.title2)
-                .bold()
-                .foregroundColor(.white)
-                .frame(width: width, height: 50)
-                .background(Color.buttonBGC)
+        Text(title)
+            .font(.title2)
+            .bold()
+            .foregroundColor(.white)
+            .frame(width: width, height: 50)
+            .background(Color.buttonBGC)
     }
     
 }
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
-            
+        LoginView(email: "", password: "", homeView: false, registerView: false, activateView: false, forgotPasswordView: false, isShowingPopUp: false, isLoading: false)
+        
     }
 }

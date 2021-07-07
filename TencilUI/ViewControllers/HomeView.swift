@@ -11,6 +11,8 @@ struct HomeView: View {
     @State var isShowing = false
     @State var categories = [Category]()
     @State var business = [Business]()
+    @State var showQA = !UserDefaults.standard.bool(forKey: String.userDefaultKeys.questionnaireCompleted)
+    @State var navToQA = false
     var body: some View {
             NavigationView{
                 ZStack {
@@ -35,7 +37,21 @@ struct HomeView: View {
                                                         .padding(.top, 20)
                                                 })
                         )
+                        .navigationBarItems(trailing: Button(action: {
+                            if showQA{
+                                navToQA = true
+                            }
+                            
+                        }, label: {
+                            if showQA{
+                                Image.question
+                                    .accentColor(.black)
+                            }
+                        }))
                 }
+                .fullScreenCover(isPresented: $navToQA, content: {
+                    Questionnaire(fromHome: $navToQA)
+                })
             }
             .onAppear(){
                 Api().getBusiness { business in

@@ -88,4 +88,52 @@ class Api{
         }.resume()
         
     }
+    
+    func sendEmail(email : String, completion : @escaping (Int) -> Void){
+        guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/pwreset.php?func=ir")else {return}
+        
+        let body : [String : String] = ["uid" : email]
+        print(body)
+        let finalBody = try? JSONSerialization.data(withJSONObject: body)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = finalBody
+        request.setValue("a6lNFeTgMKth2xYKnlIC0o8cO8lubqcE", forHTTPHeaderField: "X-API-KEY")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        URLSession.shared.dataTask(with: request){ (data,response,error) in
+            if let response = response as? HTTPURLResponse {
+                        print("Content-Type: \(response.allHeaderFields["Content-Type"] ?? "")")
+                        print("statusCode: \(response.statusCode)")
+                completion(response.statusCode)
+                    } else {
+                        completion(404)
+                    }
+        }.resume()
+        
+    }
+    
+    //{"code":"596fad","uid":"tester1@yopmail.com","pwd":"123"}
+    func resetPassword(email : String,pwd : String, code : String, completion : @escaping (Int) -> Void){
+        guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/pwreset.php?func=res")else {return}
+        
+        let body : [String : String] = ["uid" : email,"pwd" : pwd, "code" : code]
+        print(body)
+        let finalBody = try? JSONSerialization.data(withJSONObject: body)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = finalBody
+        request.setValue("a6lNFeTgMKth2xYKnlIC0o8cO8lubqcE", forHTTPHeaderField: "X-API-KEY")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        URLSession.shared.dataTask(with: request){ (data,response,error) in
+            if let response = response as? HTTPURLResponse {
+                        print("Content-Type: \(response.allHeaderFields["Content-Type"] ?? "")")
+                        print("statusCode: \(response.statusCode)")
+                completion(response.statusCode)
+                    } else {
+                        completion(404)
+                    }
+        }.resume()
+        
+    }
+    //
 }

@@ -23,6 +23,8 @@ extension Image{
     static let lockFill = Image(systemName: "lock.fill")
     static let back = Image(systemName: "chevron.left")
     static let warning = Image(systemName: "exclamationmark.triangle.fill")
+    static let pin = Image(systemName: "ellipsis.rectangle")
+    static let checkMark = Image(systemName : "checkmark.circle.fill")
     
     static let launchImage = Image("launchImage")
     static let logo = Image("logo")

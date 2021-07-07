@@ -13,6 +13,7 @@ struct ActivateView: View {
     @State var isShowingPopUp = false
     @State var isLoading = false
     @Binding var activateView : Bool
+    @State var showQA = false
     var body: some View {
         ZStack{
         GeometryReader { geometry in
@@ -52,7 +53,7 @@ struct ActivateView: View {
                             isShowingPopUp = true
                         }else{
                             isShowingPopUp = false
-                            activateView.toggle()
+                            showQA = true
                         }
                     }
                     
@@ -67,6 +68,9 @@ struct ActivateView: View {
                         .cornerRadius(50)
                 })
             }
+            .fullScreenCover(isPresented: $showQA, content: {
+                Questionnaire(fromHome: Binding.constant(false))
+            })
         }
             if isLoading{
             LoaderView()

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7EB00A4D26919992005F3212 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4C26919992005F3212 /* ResetPassword.swift */; };
+		7EB00A4F26919FF7005F3212 /* PasswordUpdated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */; };
+		7EB00A522691DE84005F3212 /* QuestionTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A512691DE84005F3212 /* QuestionTab.swift */; };
+		7EB00A542691E575005F3212 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A532691E575005F3212 /* Questionnaire.swift */; };
 		9D3011E726713A5600C41379 /* TencilUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3011E626713A5600C41379 /* TencilUIApp.swift */; };
 		9D3011EB26713A5900C41379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3011EA26713A5900C41379 /* Assets.xcassets */; };
 		9D3011EE26713A5900C41379 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3011ED26713A5900C41379 /* Preview Assets.xcassets */; };
@@ -39,6 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7EB00A4C26919992005F3212 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUpdated.swift; sourceTree = "<group>"; };
+		7EB00A512691DE84005F3212 /* QuestionTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTab.swift; sourceTree = "<group>"; };
+		7EB00A532691E575005F3212 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		9D3011E326713A5600C41379 /* TencilUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TencilUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3011E626713A5600C41379 /* TencilUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencilUIApp.swift; sourceTree = "<group>"; };
 		9D3011EA26713A5900C41379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EB00A502691C002005F3212 /* password reset */ = {
+			isa = PBXGroup;
+			children = (
+				9D674D0726723B34006A9F04 /* ForgotPasswordView.swift */,
+				7EB00A4C26919992005F3212 /* ResetPassword.swift */,
+				7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */,
+			);
+			path = "password reset";
+			sourceTree = "<group>";
+		};
 		9D3011DA26713A5600C41379 = {
 			isa = PBXGroup;
 			children = (
@@ -179,8 +197,10 @@
 				9D674CFD26720595006A9F04 /* RegisterView.swift */,
 				9D674CFF26720C9F006A9F04 /* ActivateView.swift */,
 				9D674D0126720F63006A9F04 /* HomeView.swift */,
-				9D674D0726723B34006A9F04 /* ForgotPasswordView.swift */,
+				7EB00A502691C002005F3212 /* password reset */,
 				9D59C80C2688951500EC5181 /* DetailsView.swift */,
+				7EB00A512691DE84005F3212 /* QuestionTab.swift */,
+				7EB00A532691E575005F3212 /* Questionnaire.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -289,12 +309,15 @@
 				9D3011F82671575600C41379 /* LoginView.swift in Sources */,
 				9D674D1926729760006A9F04 /* String+Ext.swift in Sources */,
 				9D59C80D2688951500EC5181 /* DetailsView.swift in Sources */,
+				7EB00A4F26919FF7005F3212 /* PasswordUpdated.swift in Sources */,
 				9D674D0826723B34006A9F04 /* ForgotPasswordView.swift in Sources */,
 				9D674CFE26720595006A9F04 /* RegisterView.swift in Sources */,
 				9D674D12267283FA006A9F04 /* StaticCardView.swift in Sources */,
 				9D59C8022686762400EC5181 /* BusinessModel.swift in Sources */,
 				9D59C80426867C8A00EC5181 /* CategoriesModel.swift in Sources */,
 				9D3011E726713A5600C41379 /* TencilUIApp.swift in Sources */,
+				7EB00A542691E575005F3212 /* Questionnaire.swift in Sources */,
+				7EB00A522691DE84005F3212 /* QuestionTab.swift in Sources */,
 				9D59C7F42686500100EC5181 /* LoginModel.swift in Sources */,
 				9D674D0E2672554C006A9F04 /* SlideMenuHeader.swift in Sources */,
 				9D59C80B2687713100EC5181 /* RegistrationLogin.swift in Sources */,
@@ -305,6 +328,7 @@
 				9D59C7FE26866FE300EC5181 /* Common.swift in Sources */,
 				9D674D0026720C9F006A9F04 /* ActivateView.swift in Sources */,
 				9D59C800268672A600EC5181 /* LoaderView.swift in Sources */,
+				7EB00A4D26919992005F3212 /* ResetPassword.swift in Sources */,
 				9D674D142672846A006A9F04 /* HorizontalCardView.swift in Sources */,
 				9D674D0C26725539006A9F04 /* SlideMenuView.swift in Sources */,
 			);

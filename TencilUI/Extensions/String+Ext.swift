@@ -40,10 +40,28 @@ extension String{
     static let categories = "Categories"
     static let coding = "Coding"
     static let provideEmail = "Provide Your Account Email To Reset Your Password"
+    static let provideEmailAndNewPassword = "Provide Your Account Email and New Password To Complete the reset"
+    
     static let activityIndicatorText = "Loadind Please Wait"
     static let loginError = "Invalid Credentials"
     static let somthingWentWrong = "Somthing went wrong"
+    static let next = "Next"
+    static let previous = "Previous"
+    static let submit = "Submit"
+    
+    static let resetPassword = "Reset Password"
+    static let passwordUpdated = "Password Updated"
+    static let passwordUpdatedSuccessfully = "Password Updated Successfully!"
+    static let enterValidEmailID = "Please enter a valid email id"
+   
+    
+    
+    
     //************
     static let provide = "Provide"
     //************
+    
+    struct userDefaultKeys {
+        static let questionnaireCompleted = "QA"
+    }
 }
