@@ -24,12 +24,12 @@ struct SlideMenuHeader: View {
             })
             VStack(alignment : .leading) {
                 Text(String.welcomeTencil)
-                    .font(.system(size: 30,weight: .bold))
+                    .font(.system(size: 25,weight: .bold))
                     .padding(.horizontal,16)
                 Text(String.countrolFuture)
-                    .font(.system(size: 20,weight: .medium))
+                    .font(.system(size: 15,weight: .medium))
                     .padding([.horizontal],16)
-                    .padding(.top,5)
+                    
             }.frame(height: 150, alignment: .bottom)
         }
     }

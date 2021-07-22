@@ -121,7 +121,9 @@ struct CustomTextField : View {
         HStack {
             TextField(text, text: $value)
                 .keyboardType(keyBoardType)
+                .autocapitalization(.none)
                 .disableAutocorrection(true)
+                
             image
         }.padding()
         .background(

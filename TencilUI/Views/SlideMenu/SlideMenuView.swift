@@ -16,7 +16,7 @@ struct SlideMenuView: View {
             VStack(alignment : .leading){
                 SlideMenuHeader(isShowing: $isShowing)
                     .foregroundColor(.white)
-                SlideMenuItems()
+                SlideMenuItems(isShowing: $isShowing)
                     .background(Color.white)
                 Spacer()
             }

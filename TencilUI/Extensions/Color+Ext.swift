@@ -15,8 +15,8 @@ extension Color{
     static let staticCVBGC = Color("StaticHCVBG")
     static let titleFC = Color("TitleFC")
     static let buttonColor = Color("ButtonColor")
-    
-    
+    static let careerButtonColor = Color("CareerButtonColor")
+    static let contactButtonColor = Color("ContactButtonColor")
     
     
     

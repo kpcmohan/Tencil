@@ -78,27 +78,12 @@ struct Questionnaire: View {
           "Part-Time Work",
           "Travelling",
           "I am Results Orientated"],
-        [ "Coding",
-          "Edtech",
-          "Communication Companies",
-          "Consultancy",
-          "Fintech",
-          "Other",
-          "Marketing",
-          "Property",
-          "Utilities",
-          "Health & Care",
-          "Food",
-          "Law",
-          "Sport",
-          "Education",
-          "Finance",
-          "Fashion",
-          "Travel",
-          "Gaming",
-          "Music"]
+        ["Coding"]
         
     ]
+    @State var categoryModelArray = [Category]()
+    @State var categoryNames = [String]()
+    var selectedCategoryID = Int()
     @State var selectedTab = 0
     @State var showLogin = false
     var body: some View {
@@ -107,7 +92,12 @@ struct Questionnaire: View {
                 TabView(selection: $selectedTab,
                         content:  {
                             ForEach(0...12,id : \.self){ index in
-                                QuestionTab(question: questions[index], answers: answers[index])
+                                if index != 12{
+                                    QuestionTab(question: questions[index], answers: answers[index])
+                                }
+                                else{
+                                    QuestionTab(question: questions[index], answers: categoryNames,allCategories: categoryModelArray)
+                                }
                             }
                         })
                 .tabViewStyle(PageTabViewStyle())
@@ -165,6 +155,13 @@ struct Questionnaire: View {
                 Text("Skip")
                     .foregroundColor(.black)
             }))
+        }
+        .onAppear(){
+            Api().getCategories { categories in
+                self.categoryModelArray = categories.categories
+                self.categoryNames = self.categoryModelArray.compactMap({$0.name})
+            }
+
         }
     }
 }

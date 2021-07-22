@@ -12,6 +12,8 @@ struct QuestionTab: View {
     @State var answers : [String]
     @State var selectedAnswer = "Select an answer"
     @State var isExpanded = false
+    @State var allCategories = [Category]()
+    @State var selectedCategory = [Category]()
     var body: some View {
         ZStack{
                 VStack{
@@ -29,6 +31,10 @@ struct QuestionTab: View {
                                         .font(.title2)
                                         .onTapGesture {
                                             selectedAnswer = answer
+                                            if allCategories.count > 0{
+                                                self.selectedCategory = allCategories.filter({$0.name == answer})
+                                                UserDefaults.standard.setValue(self.selectedCategory.first?.cid, forKey: String.userDefaultKeys.selectedCategory)
+                                            }
                                             withAnimation {
                                                 isExpanded = false
                                             }

@@ -42,7 +42,7 @@ extension String{
     static let provideEmail = "Provide Your Account Email To Reset Your Password"
     static let provideEmailAndNewPassword = "Provide Your Account Email and New Password To Complete the reset"
     
-    static let activityIndicatorText = "Loadind Please Wait"
+    static let activityIndicatorText = "Processing Please Wait"
     static let loginError = "Invalid Credentials"
     static let somthingWentWrong = "Somthing went wrong"
     static let next = "Next"
@@ -53,6 +53,7 @@ extension String{
     static let passwordUpdated = "Password Updated"
     static let passwordUpdatedSuccessfully = "Password Updated Successfully!"
     static let enterValidEmailID = "Please enter a valid email id"
+    static let home = "Home"
    
     
     
@@ -63,5 +64,7 @@ extension String{
     
     struct userDefaultKeys {
         static let questionnaireCompleted = "QA"
+        static let selectedCategory = "Selected_Category"
+        
     }
 }

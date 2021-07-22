@@ -25,9 +25,14 @@ struct CardView: View {
                 }
             }
             Text(title)
-                .font(.system(size: 30))
+                .font(.system(size: 20))
+                .padding(.bottom, 5)
             Text(description)
-        }.frame(width: width, height: 250, alignment: .center)
+                .font(.system(size: 14))
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+        }.frame(width: width, height: 300, alignment: .center)
         .cornerRadius(20)
         .padding()
         .background(Color.white)
@@ -36,6 +41,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(imageURL: "", title: .privacyPolicy, description: .privacyPolicy, width: 100)
+        CardView(imageURL: "", title: .privacyPolicy, description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", width: 100)
     }
 }
