@@ -114,7 +114,7 @@ class Api{
     }
     func getMonth()->String {
         let month = Calendar.current.dateComponents([.month], from: Date())
-        if month.month ?? 0 > 8{
+        if month.month ?? 0 > 9{
            return "\(month)"
        }
         return ""

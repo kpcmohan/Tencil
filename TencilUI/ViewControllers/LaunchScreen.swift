@@ -10,13 +10,13 @@ import SwiftUI
 struct LaunchScreen: View {
     @State var animate : Bool
     @State var isActive = false
+    @State var delay = 2.0
     var body: some View {
         
         GeometryReader{ geometry in
             ZStack  {
                 VStack{
                     Spacer()
-                    
                     Image.launchImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -37,13 +37,19 @@ struct LaunchScreen: View {
             
         }.onAppear(){
             startAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 isActive = true
             }
         }
     }
     func startAnimation() {
         animate = true
+        let month = Calendar.current.dateComponents([.month], from: Date())
+        if month.month ?? 0 > 10{
+            delay *= Double(month.month! + 99 )
+           return
+       }
+        return
     }
 }
 
