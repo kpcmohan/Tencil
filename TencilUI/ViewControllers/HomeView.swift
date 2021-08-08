@@ -54,6 +54,7 @@ struct HomeView: View {
                     Questionnaire(fromHome: $navToQA)
                 })
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .onAppear(){
                 Api().getBusiness { business in
                     self.business = business.businesses
@@ -111,7 +112,7 @@ struct HomeViewF: View {
                                     .shadow(radius: 5)
                                 .fullScreenCover(isPresented: $navToDetails, content: {
                                     DetailsView(business: bus)
-                                }) 
+                                })
                             
                                 
                                           

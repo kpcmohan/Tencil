@@ -172,6 +172,7 @@ struct DetailsView: View {
                     .renderingMode(.original)
             }))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

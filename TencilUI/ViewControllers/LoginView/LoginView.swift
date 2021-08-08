@@ -8,7 +8,7 @@
 import SwiftUI
 import PopupView
 
-struct LoginView: View {
+struct LoginView : View {
     @State var email = String()
     @State var password = String()
     @State var homeView = Bool()
@@ -55,7 +55,6 @@ struct LoginView: View {
                                 isShowingPopUp = true
                             }
                         }
-                        //homeView.toggle()
                     }, label: {
                         CustomButton(width: geometry.size.width - 30, title: .login)
                     })
@@ -123,7 +122,7 @@ struct CustomTextField : View {
                 .keyboardType(keyBoardType)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
-                
+            
             image
         }.padding()
         .background(

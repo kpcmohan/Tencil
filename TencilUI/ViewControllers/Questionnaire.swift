@@ -156,6 +156,7 @@ struct Questionnaire: View {
                     .foregroundColor(.black)
             }))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(){
             Api().getCategories { categories in
                 self.categoryModelArray = categories.categories

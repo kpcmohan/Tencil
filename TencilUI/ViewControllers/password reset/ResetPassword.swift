@@ -100,7 +100,7 @@ struct ResetPassword: View {
                 
             }
         }
-        
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

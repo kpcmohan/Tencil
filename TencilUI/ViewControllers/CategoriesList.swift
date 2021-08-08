@@ -39,6 +39,7 @@ struct CategoriesList: View {
                     .renderingMode(.original)
             }))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
