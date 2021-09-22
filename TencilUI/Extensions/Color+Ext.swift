@@ -17,7 +17,7 @@ extension Color{
     static let buttonColor = Color("ButtonColor")
     static let careerButtonColor = Color("CareerButtonColor")
     static let contactButtonColor = Color("ContactButtonColor")
-    
+    static let profileBG = Color("profileBG")
     
     
     

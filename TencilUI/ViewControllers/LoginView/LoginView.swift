@@ -31,7 +31,7 @@ struct LoginView : View {
                     CustomTextField(value: $email, text: .email, image: .person,keyBoardType: .emailAddress)
                     CustomPasswordField(value: $password, text: .password, image: .lock)
                         .fullScreenCover(isPresented: $homeView, content: {
-                            HomeView()
+                            TabViewController()
                         })
                         .fullScreenCover(isPresented: $registerView, content: {
                             RegisterView(registerView: $registerView)

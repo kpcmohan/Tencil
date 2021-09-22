@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E16DDBB26FAE91900A41135 /* PlayerViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E16DDBA26FAE91900A41135 /* PlayerViewContainer.swift */; };
 		7E3BB9F326A3682E00F18976 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3BB9F226A3682E00F18976 /* CategoriesList.swift */; };
 		7EB00A4D26919992005F3212 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4C26919992005F3212 /* ResetPassword.swift */; };
 		7EB00A4F26919FF7005F3212 /* PasswordUpdated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */; };
@@ -15,6 +16,7 @@
 		7ED0D4D126A43D9F00FC574E /* CategoryListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0D4D026A43D9F00FC574E /* CategoryListCardView.swift */; };
 		7ED0D4D326A455B300FC574E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0D4D226A455B300FC574E /* ActivityViewController.swift */; };
 		7ED0D4D526A4574700FC574E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0D4D426A4574700FC574E /* ProfileView.swift */; };
+		7EFDA4B026EDD80400AB57EC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFDA4AF26EDD80400AB57EC /* TabViewController.swift */; };
 		9D3011E726713A5600C41379 /* TencilUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3011E626713A5600C41379 /* TencilUIApp.swift */; };
 		9D3011EB26713A5900C41379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3011EA26713A5900C41379 /* Assets.xcassets */; };
 		9D3011EE26713A5900C41379 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3011ED26713A5900C41379 /* Preview Assets.xcassets */; };
@@ -47,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E16DDBA26FAE91900A41135 /* PlayerViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewContainer.swift; sourceTree = "<group>"; };
 		7E3BB9F226A3682E00F18976 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 		7EB00A4C26919992005F3212 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUpdated.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		7ED0D4D026A43D9F00FC574E /* CategoryListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListCardView.swift; sourceTree = "<group>"; };
 		7ED0D4D226A455B300FC574E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		7ED0D4D426A4574700FC574E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7EFDA4AF26EDD80400AB57EC /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		9D3011E326713A5600C41379 /* TencilUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TencilUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3011E626713A5600C41379 /* TencilUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencilUIApp.swift; sourceTree = "<group>"; };
 		9D3011EA26713A5900C41379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				9D674D132672846A006A9F04 /* HorizontalCardView.swift */,
 				9D59C7FF268672A600EC5181 /* LoaderView.swift */,
 				7ED0D4D026A43D9F00FC574E /* CategoryListCardView.swift */,
+				7E16DDBA26FAE91900A41135 /* PlayerViewContainer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				7E3BB9F226A3682E00F18976 /* CategoriesList.swift */,
 				7ED0D4D226A455B300FC574E /* ActivityViewController.swift */,
 				7ED0D4D426A4574700FC574E /* ProfileView.swift */,
+				7EFDA4AF26EDD80400AB57EC /* TabViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -318,9 +324,11 @@
 				9D59C7F82686515800EC5181 /* Api.swift in Sources */,
 				9D674D0526722426006A9F04 /* CardView.swift in Sources */,
 				9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */,
+				7E16DDBB26FAE91900A41135 /* PlayerViewContainer.swift in Sources */,
 				7E3BB9F326A3682E00F18976 /* CategoriesList.swift in Sources */,
 				9D3011F82671575600C41379 /* LoginView.swift in Sources */,
 				9D674D1926729760006A9F04 /* String+Ext.swift in Sources */,
+				7EFDA4B026EDD80400AB57EC /* TabViewController.swift in Sources */,
 				9D59C80D2688951500EC5181 /* DetailsView.swift in Sources */,
 				7EB00A4F26919FF7005F3212 /* PasswordUpdated.swift in Sources */,
 				9D674D0826723B34006A9F04 /* ForgotPasswordView.swift in Sources */,

@@ -29,7 +29,7 @@ class Api{
     
     func getBusiness(completion : @escaping (BusinessModel) -> Void) {
         
-        guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/businesses.php?method=get&ft=true\(getMonth())")else {return}
+        guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/businesses.php?method=get&ft=true")else {return}
         URLSession.shared.dataTask(with: url){ (data,response,error) in
             guard let dataObj = data else{return}
             guard let jsonData = try? JSONDecoder().decode(BusinessModel.self, from: dataObj)else {return}
@@ -112,13 +112,7 @@ class Api{
         }.resume()
         
     }
-    func getMonth()->String {
-        let month = Calendar.current.dateComponents([.month], from: Date())
-        if month.month ?? 0 > 9{
-           return "\(month)"
-       }
-        return ""
-    }
+
     func resetPassword(email : String,pwd : String, code : String, completion : @escaping (Int) -> Void){
         guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/pwreset.php?func=res")else {return}
         

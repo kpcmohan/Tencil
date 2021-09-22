@@ -29,6 +29,8 @@ extension Image{
     
     static let launchImage = Image("launchImage")
     static let logo = Image("logo")
+    static let profile = Image("profile")
+    
     /*
      
      
