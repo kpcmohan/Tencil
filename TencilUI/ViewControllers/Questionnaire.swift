@@ -67,7 +67,7 @@ struct Questionnaire: View {
          "Other",
          "None"],
         [ "I Am Passionate About My Work",
-          "I Am Highly Organised.",
+          "I Am Highly Organised",
           "I Am Ambitious And Driven",
           "I am a People Person",
           "Im a Natural Leader",
