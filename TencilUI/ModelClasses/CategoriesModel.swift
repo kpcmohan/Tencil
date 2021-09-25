@@ -14,6 +14,6 @@ struct CategoriesModel: Codable {
 
 // MARK: - Category
 struct Category: Codable, Identifiable {
-    let id = UUID()
+    let id = UUID().uuidString
     let cid, name: String?
 }
