@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct TabViewController: View {
+    @AppStorage("uid") var uid : String?
+    @AppStorage("fname") var fname : String?
+    @AppStorage("userAPIKey") var userAPIKey : String?
+    
     var body: some View {
         TabView {
                    HomeView()
@@ -18,7 +22,7 @@ struct TabViewController: View {
                 .tabItem {
                     Label("Questions", systemImage: "text.bubble.fill")
                 }
-            ProfileView(email: "steve@yopmail.com", name: "steve", password: "123456")
+            ProfileView()
                        .tabItem {
                            Label("Me", systemImage: "person.fill")
                        }

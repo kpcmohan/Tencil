@@ -17,6 +17,9 @@ struct LoginView : View {
     @State var forgotPasswordView = Bool()
     @State var isShowingPopUp = false
     @State var isLoading = false
+    @AppStorage("uid") var uid : String?
+    @AppStorage("fname") var fname : String?
+    @AppStorage("userAPIKey") var userAPIKey : String?
     
     var body: some View {
         ZStack {
@@ -48,6 +51,9 @@ struct LoginView : View {
                         Api().login(email: email, password: password) { loginResponse in
                             isLoading = false
                             if loginResponse.userActive{
+                                uid = loginResponse.uid
+                                fname = loginResponse.fname
+                                userAPIKey = loginResponse.userAPIKey
                                 isShowingPopUp = false
                                 homeView.toggle()
                             }

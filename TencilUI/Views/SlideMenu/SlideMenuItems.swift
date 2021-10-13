@@ -11,6 +11,9 @@ struct SlideMenuItems: View {
     @Binding var isShowing : Bool
     @State var isLogin = false
     @State var isShare = false
+    @AppStorage("uid") var uid : String?
+    @AppStorage("fname") var fname : String?
+    @AppStorage("userAPIKey") var userAPIKey : String?
     @Environment(\.openURL) var openURL
     var body: some View {
         ScrollView{
@@ -30,7 +33,7 @@ struct SlideMenuItems: View {
                 Group{
                     TitleText(title: .profile)
                     NavigationLink(
-                        destination: ProfileView(email: "steve@yopmail.com", name: "steve", password: "123456"),
+                        destination: ProfileView(),
                         label: {
                             ItemView(title: .profile, image: .person)
                         })

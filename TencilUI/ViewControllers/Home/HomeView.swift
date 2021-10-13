@@ -23,74 +23,83 @@ struct HomeView: View {
         UITabBar.appearance().isHidden = true
     }
     var body: some View {
-        ZStack {
-            
-            VStack(spacing: 0, content: {
+       // NavigationView {
+            ZStack {
                 
-                TabView(selection : $currentTab) {
-                    ReelsView( business: $business, reels: $reels)
-                        .tag("house.fill")
-                    Questionnaire(fromHome: Binding.constant(true))
-                        .tag("text.bubble.fill")
-                    ProfileView(email: "", name: "", password: "")
-                        .tag("person.fill")
+                
+                VStack(spacing: 0, content: {
+                    
+                    TabView(selection : $currentTab) {
+                        ReelsView( business: $business, reels: $reels)
+                            .tag("house.fill")
+                        Questionnaire(fromHome: Binding.constant(true))
+                            .tag("text.bubble.fill")
+                        ProfileView()
+                            .tag("person.fill")
+                    }
+                    HStack(spacing : 0){
+                        ForEach(["house.fill","text.bubble.fill","person.fill"], id: \.self) { image in
+                            TabBarButton(image: image, currentTab: $currentTab)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .overlay(Divider(), alignment: .top)
+                    .background(Color.black.ignoresSafeArea())
+                })
+                    .background(Color.black)
+                    .onAppear(){
+                        Api().getBusiness { business in
+                            self.business = business.businesses
+                            reels = self.business.map{item -> Reel in
+                                let url = item.videos
+                                let player = AVPlayer(url: URL(string: url)!)
+                                return Reel(player: player, business: item)
+                            }
+                            recommendedBusiness = self.business
+                            if selectedCategory != nil{
+                                recommendedBusiness = self.business.filter({$0.catID == selectedCategory})
+                                
+                            }
+                            Api().getCategories { categories in
+                                self.categories = categories.categories
+                            }
+                        }
+                    }
+                    .offset(x: isShowing ? 300 : 0, y: isShowing ? 44 : 0)
+                    .scaleEffect(isShowing ? 0.8 : 1)
+                
+                if isShowing{
+                    SlideMenuView(isShowing: $isShowing)
                 }
-                HStack(spacing : 0){
-                    ForEach(["house.fill","text.bubble.fill","person.fill"], id: \.self) { image in
-                        TabBarButton(image: image, currentTab: $currentTab)
+                ZStack {
+                    VStack {
+                        HStack{
+                            Button(action: {
+                                withAnimation(.spring()) {
+                                    isShowing.toggle()
+                                }
+                                
+                            }, label: {
+                                if !isShowing{
+                                    Image.menu
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .frame(width: 20, height: 20, alignment: .center)
+                                        .foregroundColor(.white)
+                                    //.padding(.top, 20)
+                                }
+                                
+                            })
+                            Spacer()
+                        }
+                        .padding([.top, .leading], 40)
+                        Spacer()
                     }
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
-                .overlay(Divider(), alignment: .top)
-                .background(Color.black.ignoresSafeArea())
-            })
-            .background(Color.black)
-            .onAppear(){
-                Api().getBusiness { business in
-                    self.business = business.businesses
-                    reels = self.business.map{item -> Reel in
-                        let url = item.videos
-                        let player = AVPlayer(url: URL(string: url)!)
-                        return Reel(player: player, business: item)
-                    }
-                    recommendedBusiness = self.business
-                    if selectedCategory != nil{
-                        recommendedBusiness = self.business.filter({$0.catID == selectedCategory})
-                        
-                    }
-                    Api().getCategories { categories in
-                        self.categories = categories.categories
-                    }
-                }
-        }
-            if isShowing{
-            SlideMenuView(isShowing: $isShowing)
             }
-            VStack {
-            HStack{
-            Button(action: {
-            withAnimation(.spring()) {
-                isShowing.toggle()
-            }
-            
-            }, label: {
-            if !isShowing{
-            Image.menu
-                .renderingMode(.template)
-                .resizable()
-                .frame(width: 20, height: 20, alignment: .center)
-                .foregroundColor(.white)
-                //.padding(.top, 20)
-            }
-            
-            })
-            Spacer()
-            }
-            .padding([.top, .leading], 40)
-            Spacer()
-            }
-        }
+        //}
+        
     }
 }
 struct HomeView_Previews: PreviewProvider {
@@ -106,21 +115,21 @@ struct ReelsView : View {
     var body: some View{
         GeometryReader{ geo in
             let size = geo.size
-                TabView(selection: $currentReel){
-                    ForEach(reels){ reel in
-                        ReelsPlayer(reel: Binding.constant(reel), currentReel: $currentReel)
-                            .tag(reel.id)
-                            .frame(width: size.width)
-                            .rotationEffect(.init(degrees: -90))
-                           // .ignoresSafeArea()
-                    }
+            TabView(selection: $currentReel){
+                ForEach(reels){ reel in
+                    ReelsPlayer(reel: Binding.constant(reel), currentReel: $currentReel)
+                        .tag(reel.id)
+                        .frame(width: size.width)
+                        .rotationEffect(.init(degrees: -90))
+                    // .ignoresSafeArea()
                 }
-                .rotationEffect(.init(degrees: 90))
-                .frame(width: size.height)
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .frame(width: size.width)
+            }
+            .rotationEffect(.init(degrees: 90))
+            .frame(width: size.height)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .frame(width: size.width)
         }
-       // .ignoresSafeArea(.all,edges: .top)
+        // .ignoresSafeArea(.all,edges: .top)
         .background(Color.black.ignoresSafeArea())
         .onAppear(perform: {
             currentReel = reels.first?.id ?? ""
@@ -164,9 +173,9 @@ struct ReelsPlayer : View {
                     .opacity(0.01)
                     .frame(width: 300, height: 300)
                     .onTapGesture {
-                         if volumeAnimation{
+                        if volumeAnimation{
                             return
-                         }
+                        }
                         isMuted.toggle()
                         player.isMuted = isMuted
                         withAnimation{volumeAnimation.toggle()}
@@ -192,7 +201,7 @@ struct ReelsPlayer : View {
                                                     .foregroundColor(.white)
                                                     .font(.subheadline)
                                             })
-                                            .frame(height: 120, alignment: .leading)
+                                                .frame(height: 120, alignment: .leading)
                                         }
                                         else{
                                             HStack{
@@ -209,16 +218,16 @@ struct ReelsPlayer : View {
                                         }
                                         
                                     })
-                                        Button(action: {
-                                            navToDetails = true
-                                        }, label: {
-                                            Text("Learn More")
-                                                .font(.subheadline)
-                                                .bold()
-                                                .foregroundColor(.white)
-                                                .frame(width: 250, height: 50)
-                                                .background(Color.buttonBGC)
-                                        })
+                                    Button(action: {
+                                        navToDetails = true
+                                    }, label: {
+                                        Text("Learn More")
+                                            .font(.subheadline)
+                                            .bold()
+                                            .foregroundColor(.white)
+                                            .frame(width: 250, height: 50)
+                                            .background(Color.buttonBGC)
+                                    })
                                         .padding(.vertical)
                                 }
                                 
@@ -343,10 +352,10 @@ struct HomeViewF: View {
  SlideMenuView(isShowing: $isShowing)
  }
  
-             HomeViewF(business: $business, categories: $categories, recommendedBusiness: $recommendedBusiness, selectedCategory: $selectedCategory)
-                 .cornerRadius(isShowing ? 20 : 10)
-                 .offset(x: isShowing ? 300 : 0, y: isShowing ? 44 : 0)
-                 .scaleEffect(isShowing ? 0.8 : 1)
+ HomeViewF(business: $business, categories: $categories, recommendedBusiness: $recommendedBusiness, selectedCategory: $selectedCategory)
+ .cornerRadius(isShowing ? 20 : 10)
+ .offset(x: isShowing ? 300 : 0, y: isShowing ? 44 : 0)
+ .scaleEffect(isShowing ? 0.8 : 1)
  VStack {
  HStack{
  Button(action: {

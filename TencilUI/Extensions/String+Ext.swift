@@ -54,6 +54,8 @@ extension String{
     static let passwordUpdatedSuccessfully = "Password Updated Successfully!"
     static let enterValidEmailID = "Please enter a valid email id"
     static let home = "Home"
+    static let uploadSuccess = "Video Uploaded Successfully"
+    static let uploadFailed = "Unable to upload video"
    
     
     

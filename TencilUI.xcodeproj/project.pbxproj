@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E16DDBB26FAE91900A41135 /* PlayerViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E16DDBA26FAE91900A41135 /* PlayerViewContainer.swift */; };
 		7E3BB9F326A3682E00F18976 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3BB9F226A3682E00F18976 /* CategoriesList.swift */; };
+		7E89EDAA2715E277003151F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7E89EDA92715E277003151F7 /* Alamofire */; };
 		7EB00A4D26919992005F3212 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4C26919992005F3212 /* ResetPassword.swift */; };
 		7EB00A4F26919FF7005F3212 /* PasswordUpdated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */; };
 		7EB00A522691DE84005F3212 /* QuestionTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A512691DE84005F3212 /* QuestionTab.swift */; };
@@ -20,6 +21,8 @@
 		7EE12D0A26FB7796008480CE /* PlayerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE12D0926FB7796008480CE /* PlayerScrollView.swift */; };
 		7EE12D0C26FB77D6008480CE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE12D0B26FB77D6008480CE /* Player.swift */; };
 		7EE12D0E26FB780D008480CE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE12D0D26FB780D008480CE /* PlayerView.swift */; };
+		7EFB3EFD2706040200818C3B /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7EFB3EFC2706040200818C3B /* CryptoSwift */; };
+		7EFB3F0027060DE500818C3B /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFB3EFF27060DE500818C3B /* DocumentPicker.swift */; };
 		7EFDA4B026EDD80400AB57EC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFDA4AF26EDD80400AB57EC /* TabViewController.swift */; };
 		9D3011E726713A5600C41379 /* TencilUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3011E626713A5600C41379 /* TencilUIApp.swift */; };
 		9D3011EB26713A5900C41379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3011EA26713A5900C41379 /* Assets.xcassets */; };
@@ -66,6 +69,7 @@
 		7EE12D0926FB7796008480CE /* PlayerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScrollView.swift; sourceTree = "<group>"; };
 		7EE12D0B26FB77D6008480CE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7EE12D0D26FB780D008480CE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		7EFB3EFF27060DE500818C3B /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		7EFDA4AF26EDD80400AB57EC /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		9D3011E326713A5600C41379 /* TencilUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TencilUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3011E626713A5600C41379 /* TencilUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencilUIApp.swift; sourceTree = "<group>"; };
@@ -102,7 +106,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E89EDAA2715E277003151F7 /* Alamofire in Frameworks */,
 				9D59C8072687626D00EC5181 /* URLImageStore in Frameworks */,
+				7EFB3EFD2706040200818C3B /* CryptoSwift in Frameworks */,
 				9D59C8092687626D00EC5181 /* URLImage in Frameworks */,
 				9D59C7FB26866AF400EC5181 /* PopupView in Frameworks */,
 			);
@@ -131,6 +137,15 @@
 				7EE12D0D26FB780D008480CE /* PlayerView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		7EFB3EFE27060DB800818C3B /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				7ED0D4D426A4574700FC574E /* ProfileView.swift */,
+				7EFB3EFF27060DE500818C3B /* DocumentPicker.swift */,
+			);
+			path = ProfileView;
 			sourceTree = "<group>";
 		};
 		9D3011DA26713A5600C41379 = {
@@ -237,7 +252,7 @@
 				7EB00A532691E575005F3212 /* Questionnaire.swift */,
 				7E3BB9F226A3682E00F18976 /* CategoriesList.swift */,
 				7ED0D4D226A455B300FC574E /* ActivityViewController.swift */,
-				7ED0D4D426A4574700FC574E /* ProfileView.swift */,
+				7EFB3EFE27060DB800818C3B /* ProfileView */,
 				7EFDA4AF26EDD80400AB57EC /* TabViewController.swift */,
 			);
 			path = ViewControllers;
@@ -283,6 +298,8 @@
 				9D59C7FA26866AF400EC5181 /* PopupView */,
 				9D59C8062687626D00EC5181 /* URLImageStore */,
 				9D59C8082687626D00EC5181 /* URLImage */,
+				7EFB3EFC2706040200818C3B /* CryptoSwift */,
+				7E89EDA92715E277003151F7 /* Alamofire */,
 			);
 			productName = TencilUI;
 			productReference = 9D3011E326713A5600C41379 /* TencilUI.app */;
@@ -314,6 +331,8 @@
 			packageReferences = (
 				9D59C7F926866AF400EC5181 /* XCRemoteSwiftPackageReference "PopupView" */,
 				9D59C8052687626D00EC5181 /* XCRemoteSwiftPackageReference "url-image" */,
+				7EFB3EFB2706040200818C3B /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				7E89EDA82715E277003151F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9D3011E426713A5600C41379 /* Products */;
 			projectDirPath = "";
@@ -345,6 +364,7 @@
 				9D59C7F82686515800EC5181 /* Api.swift in Sources */,
 				9D674D0526722426006A9F04 /* CardView.swift in Sources */,
 				9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */,
+				7EFB3F0027060DE500818C3B /* DocumentPicker.swift in Sources */,
 				7E16DDBB26FAE91900A41135 /* PlayerViewContainer.swift in Sources */,
 				7E3BB9F326A3682E00F18976 /* CategoriesList.swift in Sources */,
 				9D3011F82671575600C41379 /* LoginView.swift in Sources */,
@@ -516,7 +536,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Qaptive-Tech.TencilUI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cm.TencilUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -538,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Qaptive-Tech.TencilUI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cm.TencilUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -569,6 +589,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7E89EDA82715E277003151F7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		7EFB3EFB2706040200818C3B /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		9D59C7F926866AF400EC5181 /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView";
@@ -588,6 +624,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7E89EDA92715E277003151F7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E89EDA82715E277003151F7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		7EFB3EFC2706040200818C3B /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EFB3EFB2706040200818C3B /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
 		9D59C7FA26866AF400EC5181 /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9D59C7F926866AF400EC5181 /* XCRemoteSwiftPackageReference "PopupView" */;
