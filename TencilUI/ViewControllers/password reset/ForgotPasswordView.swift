@@ -21,11 +21,11 @@ struct ForgotPasswordView: View {
                         Image.lockFill
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100, alignment: .center)
+                            .frame(width: geometry.size.width / 4, height: geometry.size.width / 4, alignment: .center)
                             .padding()
                         Text(String.forgotPassword.uppercased())
                             .foregroundColor(.black)
-                            .font(.system(size: 35 , weight: .bold))
+                            .font(.system(size: geometry.size.width / 15 , weight: .bold))
                             .padding([.horizontal,.top], 20)
                         Text(String.provideEmail)
                             .foregroundColor(.gray)
@@ -34,45 +34,48 @@ struct ForgotPasswordView: View {
                         
                         CustomTextField(value: $email, text: .email, image: .mail,keyBoardType: .emailAddress)
                         
-                                Button(action: {
-                                    Common().dismissKeyboard()
-                                    if email.isEmpty{
-                                        isShowingPopUp = true
+                        Button(action: {
+                            Common().dismissKeyboard()
+                            if email.isEmpty{
+                                isShowingPopUp = true
+                            }
+                            else{
+                                isLoading = true
+                                Api().sendEmail(email: email) { status in
+                                    isLoading = false
+                                    if status == 200{
+                                        showResetView = true
                                     }
                                     else{
-                                        isLoading = true
-                                        Api().sendEmail(email: email) { status in
-                                            isLoading = false
-                                            if status == 200{
-                                                showResetView = true
-                                            }
-                                            else{
-                                                
-                                            }
-                                        }
+                                        
                                     }
-                                }, label: {
-                                    CustomButton(width: UIScreen.main.bounds.width * 0.8, title: .next.uppercased())
-                                })
-                                .cornerRadius(25)
-                                .padding()
-                                .padding()
-                            
+                                }
+                            }
+                        }, label: {
+                            CustomButton(width: UIScreen.main.bounds.width * 0.8, height: geometry.size.width / 3, title: .next.uppercased())
+                        })
+                            .cornerRadius(25)
+                            .padding()
+                            .padding()
+                        
                         
                         Spacer()
                     }
                     .navigationBarItems(leading:
                                             Button(action: {
-                                                forgotPasswordView = false
-                                            }, label: {
-                                                Image.back
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 25, height: 25, alignment: .center)
-                                                    .foregroundColor(.black)
-                                            })
+                        forgotPasswordView = false
+                    }, label: {
+                        HStack {
+                            Image.back
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: 45, height: 45)
+                    })
                                         
-                )
+                    )
                 }
                 if isLoading{
                     LoaderView()

@@ -12,16 +12,20 @@ struct SlideMenuHeader: View {
     var body: some View {
         
         ZStack(alignment : .topTrailing ) {
-            Button(action: {
-                withAnimation (.spring()){
-                    isShowing.toggle()
-                }
-            }, label: {
-                Image.close
-                    .frame(width: 32, height: 32, alignment: .center)
-                    .foregroundColor(.white)
-                    .padding()
-            })
+//            Button(action: {
+//                withAnimation (.spring()){
+//                    isShowing.toggle()
+//                }
+//            }, label: {
+//                HStack {
+//                    Image.close
+//                        .frame(width: 32, height: 32, alignment: .center)
+//                        .foregroundColor(.white)
+//                        .padding()
+//                }
+//                .frame(width: 45, height: 45)
+//                
+//            })
             VStack(alignment : .leading) {
                 Text(String.welcomeTencil)
                     .font(.system(size: 25,weight: .bold))

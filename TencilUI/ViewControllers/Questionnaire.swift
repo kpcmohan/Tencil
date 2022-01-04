@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Questionnaire: View {
+    @State var showCompletionPopUp = false
     @Binding var fromHome : Bool
     @State var questions = ["Q1: Where Do You Live?",
                             "Q2: How Old Are You?",
@@ -108,7 +109,7 @@ struct Questionnaire: View {
                         }
                     }, label: {
                         if selectedTab > 0{
-                            CustomButton(width: 150, title: .previous.uppercased())
+                            CustomButton(width: 150, height: 60, title: .previous.uppercased())
                         }
                     })
                     
@@ -120,6 +121,7 @@ struct Questionnaire: View {
                             else{
                                 UserDefaults.standard.setValue(true, forKey: String.userDefaultKeys.questionnaireCompleted)
                                 if fromHome{
+                                    showCompletionPopUp = true
                                     fromHome = false
                                 }
                                 else{
@@ -129,10 +131,10 @@ struct Questionnaire: View {
                         }
                     }, label: {
                         if selectedTab < 12{
-                            CustomButton(width: 150, title: .next.uppercased())
+                            CustomButton(width: 150, height: 60, title: .next.uppercased())
                         }
                         else{
-                            CustomButton(width: 150, title: .submit.uppercased())
+                            CustomButton(width: 150, height: 60, title: .submit.uppercased())
                         }
                         
                     })
@@ -152,8 +154,15 @@ struct Questionnaire: View {
                     showLogin = true
                 }
             }, label: {
-                Text("Skip")
-                    .foregroundColor(.black)
+                if fromHome{
+                    Text("")
+                        .foregroundColor(.black)
+                }
+                else{
+                    Text("Skip")
+                        .foregroundColor(.black)
+                }
+                
             }))
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -164,11 +173,30 @@ struct Questionnaire: View {
             }
 
         }
+        .popup(isPresented: $showCompletionPopUp, type: .default, position: .top, animation: .easeIn, autohideIn: 3, dragToDismiss: true, closeOnTap: true, closeOnTapOutside: false) {
+            showCompletionPopUp = false
+        } view: {
+            ZStack{
+                Color.primary
+                HStack{
+                    Image.checkMark
+                        .resizable()
+                        .frame(width: 25, height: 25, alignment: .center)
+                        .foregroundColor(.white)
+                    Text(String.qaCompletionText)
+                        .foregroundColor(.white)
+                }
+            }
+            .frame(height: 80, alignment: .center)
+            .cornerRadius(10)
+            .padding()
+        }
     }
 }
 
 struct Questionnaire_Previews: PreviewProvider {
     static var previews: some View {
         Questionnaire(fromHome: Binding.constant(false))
+        //HomeView()
     }
 }

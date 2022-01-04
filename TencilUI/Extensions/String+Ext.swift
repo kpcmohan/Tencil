@@ -33,7 +33,7 @@ extension String{
     static let account = "Account"
     static let enterActivationCode = "Enter the Activation code below"
     static let activationCode = "Activation Code"
-    static let resendCode = "RESEND CODE"
+    static let resendCode = "Resend Code"
     static let weRecommend = "We Recommend"
     static let allFeaturedCompanies = "ALL FETURED COMPANIES"
     static let allFeaturedCompaniesDescription = "All the fetured companies have a top demand in your area!"
@@ -56,9 +56,11 @@ extension String{
     static let home = "Home"
     static let uploadSuccess = "Video Uploaded Successfully"
     static let uploadFailed = "Unable to upload video"
-   
-    
-    
+    static let imageUploadSuccess = "Image Uploaded Successfully"
+    static let imageUploadFailed = "Unable to upload Image"
+    static let qaCompletionText = "Thank you for submitting the answers, for the best results, Please close the App and re-open it again"
+    static let verificationCodeSent = "Check your email for a verification code"
+    static let gravatarURL = "https://en.gravatar.com"
     
     //************
     static let provide = "Provide"

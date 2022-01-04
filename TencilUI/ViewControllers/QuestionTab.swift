@@ -16,46 +16,56 @@ struct QuestionTab: View {
     @State var selectedCategory = [Category]()
     var body: some View {
         ZStack{
-                VStack{
-                    Text(question)
-                        .fontWeight(.bold)
-                        .font(.title)
-                        .padding()
-                    DisclosureGroup(selectedAnswer, isExpanded: $isExpanded) {
-                        ScrollView {
-                            VStack {
-                                ForEach(answers,id : \.self){ answer in
-                                    
-                                    Text(answer)
-                                        .fontWeight(.medium)
-                                        .font(.title2)
-                                        .onTapGesture {
-                                            selectedAnswer = answer
-                                            if allCategories.count > 0{
-                                                self.selectedCategory = allCategories.filter({$0.name == answer})
-                                                UserDefaults.standard.setValue(self.selectedCategory.first?.cid, forKey: String.userDefaultKeys.selectedCategory)
-                                            }
-                                            withAnimation {
-                                                isExpanded = false
-                                            }
+            GeometryReader { geometry in
+                HStack {
+                    Spacer()
+                    VStack{
+                            HStack {
+                                Text(question)
+                                    .fontWeight(.bold)
+                                    .font(.title3)
+                                Spacer()
+                            }
+                            DisclosureGroup(selectedAnswer, isExpanded: $isExpanded) {
+                                ScrollView {
+                                    VStack {
+                                        ForEach(answers,id : \.self){ answer in
+                                            
+                                            Text(answer)
+                                                .fontWeight(.medium)
+                                                .font(.callout)
+                                                .onTapGesture {
+                                                    selectedAnswer = answer
+                                                    if allCategories.count > 0{
+                                                        self.selectedCategory = allCategories.filter({$0.name == answer})
+                                                        UserDefaults.standard.setValue(self.selectedCategory.first?.cid, forKey: String.userDefaultKeys.selectedCategory)
+                                                    }
+                                                    withAnimation {
+                                                        isExpanded = false
+                                                    }
+                                                        
+                                                }
+                                                .padding()
                                                 
                                         }
-                                        .padding()
-                                        
-                                }
+                                    }
+                                }.frame(height: 200, alignment: .center)
+                                
                             }
-                        }.frame(height: 200, alignment: .center)
-                        
-                    }
-                    .padding()
-                    .background(Color.primary)
-                    .foregroundColor(.white)
-                    .accentColor(.white)
-                    .cornerRadius(15)
-                    
+                            .frame(width: geometry.size.width * 0.6)
+                            .padding()
+                            .background(Color.primary)
+                            .foregroundColor(.white)
+                            .accentColor(.white)
+                            .cornerRadius(15)
+                            
+                            Spacer()
+                        }
+                    .frame(width: geometry.size.width * 0.8)
+                .padding()
                     Spacer()
                 }
-                .padding()
+            }
         }
     }
 }

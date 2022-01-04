@@ -11,6 +11,9 @@ struct SlideMenuItems: View {
     @Binding var isShowing : Bool
     @State var isLogin = false
     @State var isShare = false
+    @State var isProfile = false
+    @State var isQuestion = false
+    
     @AppStorage("uid") var uid : String?
     @AppStorage("fname") var fname : String?
     @AppStorage("userAPIKey") var userAPIKey : String?
@@ -32,22 +35,39 @@ struct SlideMenuItems: View {
                 
                 Group{
                     TitleText(title: .profile)
-                    NavigationLink(
-                        destination: ProfileView(),
-                        label: {
-                            ItemView(title: .profile, image: .person)
-                        })
-                        .foregroundColor(.black)
+//                    NavigationLink(
+//                        destination: ProfileView(),
+//                        label: {
+//                            ItemView(title: .profile, image: .person)
+//                        })
+//                        .foregroundColor(.black)
                     
-                    NavigationLink(
-                        destination: Questionnaire(fromHome: Binding.constant(true)),
-                        label: {
+                    ItemView(title: .profile, image: .person)
+                        .onTapGesture {
+                            isProfile = true
+                        }
+                        .sheet(isPresented: $isProfile) {
+                            
+                        } content: {
+                            ProfileView()
+                        }
+
+
+                    
+                  
                             ItemView(title: .questions, image: .question)
-                        })
-                        .foregroundColor(.black)
+                        .onTapGesture {
+                            isQuestion = true
+                        }
+                        .sheet(isPresented: $isQuestion) {
+                            
+                        } content: {
+                            Questionnaire(fromHome: Binding.constant(true))
+                        }
                     
                     ItemView(title: .logOut, image: .logOut)
                         .onTapGesture {
+                            UserDefaults.resetDefaults()
                             isLogin = true
                         }
                         .fullScreenCover(isPresented: $isLogin, content: {

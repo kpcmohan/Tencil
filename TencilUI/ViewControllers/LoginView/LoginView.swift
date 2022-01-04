@@ -26,11 +26,13 @@ struct LoginView : View {
             GeometryReader { geometry in
                 VStack{
                     Spacer()
+    //App Logo
                     Image.logo
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 120)
+                        .frame(width: geometry.size.width / 3, height: geometry.size.width / 3)
                         .padding()
+    // Text Fields
                     CustomTextField(value: $email, text: .email, image: .person,keyBoardType: .emailAddress)
                     CustomPasswordField(value: $password, text: .password, image: .lock)
                         .fullScreenCover(isPresented: $homeView, content: {
@@ -45,28 +47,33 @@ struct LoginView : View {
                         .fullScreenCover(isPresented: $forgotPasswordView, content: {
                             ForgotPasswordView(forgotPasswordView: $forgotPasswordView)
                         })
-                    Button(action: {
-                        Common().dismissKeyboard()
-                        isLoading = true
-                        Api().login(email: email, password: password) { loginResponse in
-                            isLoading = false
-                            if loginResponse.userActive{
-                                uid = loginResponse.uid
-                                fname = loginResponse.fname
-                                userAPIKey = loginResponse.userAPIKey
-                                isShowingPopUp = false
-                                homeView.toggle()
+                    HStack {
+                        Spacer()
+    //Login Button
+                        Button(action: {
+                            Common().dismissKeyboard()
+                            isLoading = true
+                            Api().login(email: email, password: password) { loginResponse in
+                                isLoading = false
+                                if loginResponse.userActive{
+                                    uid = loginResponse.uid
+                                    fname = loginResponse.fname
+                                    userAPIKey = loginResponse.userAPIKey
+                                    isShowingPopUp = false
+                                    homeView = true
+                                }
+                                else{
+                                    isShowingPopUp = true
+                                }
                             }
-                            else{
-                                isShowingPopUp = true
-                            }
-                        }
-                    }, label: {
-                        CustomButton(width: geometry.size.width - 30, title: .login)
-                    })
-                    .padding(.bottom)
+                        }, label: {
+                            CustomButton(width: geometry.size.width * 0.9, height: geometry.size.width / 7, title: .login)
+                        })
+                            .padding(.bottom)
+                        Spacer()
+                    }
                     Button(action: {
-                        forgotPasswordView.toggle()
+                        forgotPasswordView = true
                     }, label: {
                         Text(String.forgotPassword)
                             .font(.title3)
@@ -74,16 +81,18 @@ struct LoginView : View {
                     })
                     Spacer()
                     HStack{
+    //Register Button
                         Button(action: {
-                            registerView.toggle()
+                            registerView = true
                         }, label: {
-                            CustomButton(width: 150, title: .register.uppercased())
+                            CustomButton(width: geometry.size.width / 3, height: geometry.size.width / 7, title: .register)
                         })
                         .padding()
+    //Activate Button
                         Button(action: {
-                            activateView.toggle()
+                            activateView = true
                         }, label: {
-                            CustomButton(width: 150, title: .activate.uppercased())
+                            CustomButton(width: geometry.size.width / 3, height: geometry.size.width / 7, title: .activate)
                         })
                         .padding()
                     }
@@ -162,18 +171,22 @@ struct CustomPasswordField : View {
 }
 struct CustomButton : View {
     @State var width : CGFloat
+    @State var height : CGFloat
+    
     @State var title : String
     var body : some View{
-        
-        Text(title)
-            .font(.title2)
-            .bold()
-            .foregroundColor(.white)
-            .frame(width: width, height: 50)
-            .background(Color.buttonBGC)
+                VStack(alignment: .center) {
+                    Text(title)
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: width, height: height)
+                    .background(Color.buttonBGC)
+            }
+        }
     }
     
-}
+
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(email: "", password: "", homeView: false, registerView: false, activateView: false, forgotPasswordView: false, isShowingPopUp: false, isLoading: false)

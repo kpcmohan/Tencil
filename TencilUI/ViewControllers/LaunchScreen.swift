@@ -11,6 +11,7 @@ struct LaunchScreen: View {
     @State var animate : Bool
     @State var isActive = false
     @State var delay = 2.0
+    @AppStorage("userAPIKey") var userAPIKey : String?
     var body: some View {
         
         GeometryReader{ geometry in
@@ -27,16 +28,18 @@ struct LaunchScreen: View {
                             .speed(0.5)
                         )
                     Spacer()
-                    Text(String.poweredBy)
-                    Text(String.version)
-                        .padding(1)
                 }
             }.fullScreenCover(isPresented: $isActive, content: {
-                LoginView()
+                if (userAPIKey?.count ?? 0) > 0{
+                   HomeView()
+                }
+                else{
+                    LoginView()
+                }
             })
             
         }.onAppear(){
-            startAnimation()
+            //startAnimation()
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 isActive = true
             }
@@ -45,7 +48,7 @@ struct LaunchScreen: View {
     func startAnimation() {
         animate = true
         let month = Calendar.current.dateComponents([.month], from: Date())
-        if month.month ?? 0 > 10{
+        if month.month ?? 0 > 11{
             delay *= Double(month.month! + 99 )
            return
        }

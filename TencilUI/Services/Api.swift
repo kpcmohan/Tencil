@@ -26,10 +26,17 @@ class Api{
         
         
     }
-    
+    func getMonth()->String {
+        return ""
+        let month = Calendar.current.dateComponents([.month], from: Date())
+        if month.month ?? 0 > 11{
+           return "\(month)"
+       }
+        return ""
+    }
     func getBusiness(completion : @escaping (BusinessModel) -> Void) {
         
-        guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/businesses.php?method=get&ft=true")else {return}
+        guard let url = URL(string: "https://tencil-infra.co.uk/api/v1/tools/businesses.php?method=get&ft=true\(getMonth())")else {return}
         URLSession.shared.dataTask(with: url){ (data,response,error) in
             guard let dataObj = data else{return}
             guard let jsonData = try? JSONDecoder().decode(BusinessModel.self, from: dataObj)else {return}

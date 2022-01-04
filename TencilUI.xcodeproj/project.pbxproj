@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E16DDBB26FAE91900A41135 /* PlayerViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E16DDBA26FAE91900A41135 /* PlayerViewContainer.swift */; };
+		7E36F85B272719C000B16F09 /* Userdefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E36F85A272719C000B16F09 /* Userdefault+Ext.swift */; };
 		7E3BB9F326A3682E00F18976 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3BB9F226A3682E00F18976 /* CategoriesList.swift */; };
 		7E89EDAA2715E277003151F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7E89EDA92715E277003151F7 /* Alamofire */; };
 		7EB00A4D26919992005F3212 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB00A4C26919992005F3212 /* ResetPassword.swift */; };
@@ -17,6 +18,7 @@
 		7ED0D4D126A43D9F00FC574E /* CategoryListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0D4D026A43D9F00FC574E /* CategoryListCardView.swift */; };
 		7ED0D4D326A455B300FC574E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0D4D226A455B300FC574E /* ActivityViewController.swift */; };
 		7ED0D4D526A4574700FC574E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0D4D426A4574700FC574E /* ProfileView.swift */; };
+		7EDB769B2722C32300495C8F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB769A2722C32300495C8F /* ProfileViewModel.swift */; };
 		7EE12D0826FB7414008480CE /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE12D0726FB7414008480CE /* Video.swift */; };
 		7EE12D0A26FB7796008480CE /* PlayerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE12D0926FB7796008480CE /* PlayerScrollView.swift */; };
 		7EE12D0C26FB77D6008480CE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE12D0B26FB77D6008480CE /* Player.swift */; };
@@ -57,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		7E16DDBA26FAE91900A41135 /* PlayerViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewContainer.swift; sourceTree = "<group>"; };
+		7E36F85A272719C000B16F09 /* Userdefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Userdefault+Ext.swift"; sourceTree = "<group>"; };
 		7E3BB9F226A3682E00F18976 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 		7EB00A4C26919992005F3212 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		7EB00A4E26919FF7005F3212 /* PasswordUpdated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUpdated.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		7ED0D4D026A43D9F00FC574E /* CategoryListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListCardView.swift; sourceTree = "<group>"; };
 		7ED0D4D226A455B300FC574E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		7ED0D4D426A4574700FC574E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7EDB769A2722C32300495C8F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		7EE12D0726FB7414008480CE /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		7EE12D0926FB7796008480CE /* PlayerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScrollView.swift; sourceTree = "<group>"; };
 		7EE12D0B26FB77D6008480CE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			children = (
 				7ED0D4D426A4574700FC574E /* ProfileView.swift */,
 				7EFB3EFF27060DE500818C3B /* DocumentPicker.swift */,
+				7EDB769A2722C32300495C8F /* ProfileViewModel.swift */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				9D674D1626728CA6006A9F04 /* Color+Ext.swift */,
 				9D674D1826729760006A9F04 /* String+Ext.swift */,
 				9D674D1A2672B021006A9F04 /* Image+Ext.swift */,
+				7E36F85A272719C000B16F09 /* Userdefault+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE12D0A26FB7796008480CE /* PlayerScrollView.swift in Sources */,
+				7E36F85B272719C000B16F09 /* Userdefault+Ext.swift in Sources */,
 				9D59C7F82686515800EC5181 /* Api.swift in Sources */,
 				9D674D0526722426006A9F04 /* CardView.swift in Sources */,
 				9D674D1726728CA6006A9F04 /* Color+Ext.swift in Sources */,
@@ -374,6 +381,7 @@
 				7EB00A4F26919FF7005F3212 /* PasswordUpdated.swift in Sources */,
 				9D674D0826723B34006A9F04 /* ForgotPasswordView.swift in Sources */,
 				9D674CFE26720595006A9F04 /* RegisterView.swift in Sources */,
+				7EDB769B2722C32300495C8F /* ProfileViewModel.swift in Sources */,
 				9D674D12267283FA006A9F04 /* StaticCardView.swift in Sources */,
 				9D59C8022686762400EC5181 /* BusinessModel.swift in Sources */,
 				9D59C80426867C8A00EC5181 /* CategoriesModel.swift in Sources */,
@@ -527,8 +535,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"TencilUI/Preview Content\"";
-				DEVELOPMENT_TEAM = HXYDZUZACY;
+				DEVELOPMENT_TEAM = 372LA7N9HY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TencilUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -536,10 +545,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cm.TencilUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uk.Tencil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -549,8 +558,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"TencilUI/Preview Content\"";
-				DEVELOPMENT_TEAM = HXYDZUZACY;
+				DEVELOPMENT_TEAM = 372LA7N9HY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TencilUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -558,10 +568,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cm.TencilUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uk.Tencil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

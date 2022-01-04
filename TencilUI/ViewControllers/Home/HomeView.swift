@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 import URLImage
 struct HomeView: View {
-    
+    @AppStorage(String.userDefaultKeys.selectedCategory) var selectedCategoryID : String?
     @State var isShowing = false
     @State var categories = [Category]()
     @State var business = [Business]()
@@ -19,18 +19,18 @@ struct HomeView: View {
     @State var navToQA = false
     @State var currentTab = "house.fill"
     @State var reels = [Reel]()
+    //@AppStorage("pauseVideo") var pauseVideo = Bool()
     init() {
         UITabBar.appearance().isHidden = true
+        UINavigationBar.appearance().isHidden = true
     }
     var body: some View {
        // NavigationView {
             ZStack {
-                
-                
+    //Tab view
                 VStack(spacing: 0, content: {
-                    
                     TabView(selection : $currentTab) {
-                        ReelsView( business: $business, reels: $reels)
+                        ReelsView( business: $business, reels: $reels, currentTab: $currentTab, isShowing: $isShowing)
                             .tag("house.fill")
                         Questionnaire(fromHome: Binding.constant(true))
                             .tag("text.bubble.fill")
@@ -43,7 +43,7 @@ struct HomeView: View {
                         }
                     }
                     .padding(.horizontal)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 20)
                     .overlay(Divider(), alignment: .top)
                     .background(Color.black.ignoresSafeArea())
                 })
@@ -52,9 +52,22 @@ struct HomeView: View {
                         Api().getBusiness { business in
                             self.business = business.businesses
                             reels = self.business.map{item -> Reel in
-                                let url = item.videos
-                                let player = AVPlayer(url: URL(string: url)!)
-                                return Reel(player: player, business: item)
+                                if (selectedCategoryID?.count ?? 0) > 0{
+                                    if item.catID == selectedCategoryID{
+                                        let url = item.videos
+                                        let player = AVPlayer(url: URL(string: url)!)
+                                        return Reel(player: player, business: item)
+                                    }
+                                    else{
+                                        return Reel(id: "", player: AVPlayer(), business: Business(businessID: "", businessName: "", bdesc: "", catID: "", featured: "", businessImg: "", businessWebsite: "", businessWebsiteSocial: "", careers: "", contact: "", videos: "", news: ""))
+                                    }
+                                }
+                                else{
+                                    let url = item.videos
+                                    let player = AVPlayer(url: URL(string: url)!)
+                                    return Reel(player: player, business: item)
+                                }
+                                
                             }
                             recommendedBusiness = self.business
                             if selectedCategory != nil{
@@ -68,38 +81,43 @@ struct HomeView: View {
                     }
                     .offset(x: isShowing ? 300 : 0, y: isShowing ? 44 : 0)
                     .scaleEffect(isShowing ? 0.8 : 1)
-                
                 if isShowing{
+                    
                     SlideMenuView(isShowing: $isShowing)
                 }
-                ZStack {
-                    VStack {
-                        HStack{
-                            Button(action: {
-                                withAnimation(.spring()) {
-                                    isShowing.toggle()
-                                }
-                                
-                            }, label: {
-                                if !isShowing{
-                                    Image.menu
-                                        .renderingMode(.template)
-                                        .resizable()
-                                        .frame(width: 20, height: 20, alignment: .center)
-                                        .foregroundColor(.white)
-                                    //.padding(.top, 20)
-                                }
-                                
-                            })
-                            Spacer()
-                        }
-                        .padding([.top, .leading], 40)
-                        Spacer()
-                    }
-                }
+//                ZStack {
+//                    VStack {
+//                        HStack{
+//                            Button(action: {
+//                                withAnimation(.spring()) {
+//                                    isShowing.toggle()
+//                                }
+//                                
+//                            }, label: {
+//                                if !isShowing{
+//                                    HStack{
+//                                        Image.menu
+//                                            .renderingMode(.template)
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 25, height: 25, alignment: .center)
+//                                            .foregroundColor(.white)
+//                                    }
+//                                    .frame(width: 45, height: 45, alignment: .topLeading)
+//                                }
+//                                
+//                            })
+//                            Spacer()
+//                        }
+//                        .padding([.top, .leading], 20)
+//                        Spacer()
+//                    }
+//                }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         //}
-        
     }
 }
 struct HomeView_Previews: PreviewProvider {
@@ -112,15 +130,21 @@ struct ReelsView : View {
     @State var currentReel = ""
     @Binding var business : [Business]
     @Binding var reels : [Reel]
+    @Binding var currentTab : String
+    @Binding var isShowing : Bool
+    
     var body: some View{
         GeometryReader{ geo in
             let size = geo.size
             TabView(selection: $currentReel){
                 ForEach(reels){ reel in
-                    ReelsPlayer(reel: Binding.constant(reel), currentReel: $currentReel)
-                        .tag(reel.id)
-                        .frame(width: size.width)
-                        .rotationEffect(.init(degrees: -90))
+                    if reel.id != ""{
+                        ReelsPlayer(reel: Binding.constant(reel), currentReel: $currentReel, currentTab: $currentTab, isShowing: $isShowing)
+                            .tag(reel.id)
+                            .frame(width: size.width)
+                            .rotationEffect(.init(degrees: -90))
+                    }
+                    
                     // .ignoresSafeArea()
                 }
             }
@@ -148,10 +172,14 @@ struct Reel : Identifiable {
 struct ReelsPlayer : View {
     @Binding var reel : Reel
     @Binding var currentReel : String
+    @Binding var currentTab : String
+    @Binding var isShowing : Bool
+    
     @State var showMore = false
     @State var isMuted = false
     @State var volumeAnimation = false
     @State var navToDetails = false
+    @AppStorage("pauseVideo") var pauseVideo = Bool()
     var body: some View{
         ZStack{
             if let player = reel.player{
@@ -161,7 +189,13 @@ struct ReelsPlayer : View {
                     let size = proxy.size
                     DispatchQueue.main.async {
                         if -minY < (size.height / 2) && minY < (size.height / 2) && currentReel == reel.id{
-                            player.play()
+                            if navToDetails || currentTab != "house.fill" || isShowing{
+                                player.pause()
+                            }
+                            else{
+                                player.play()
+                            }
+                            
                         }
                         else{
                             player.pause()
@@ -201,13 +235,13 @@ struct ReelsPlayer : View {
                                                     .foregroundColor(.white)
                                                     .font(.subheadline)
                                             })
-                                                .frame(height: 120, alignment: .leading)
+                                                .frame(height: 100, alignment: .leading)
                                         }
                                         else{
                                             HStack{
                                                 Text(reel.business.bdesc)
                                                     .foregroundColor(.white)
-                                                    .font(.subheadline)
+                                                    .font(Font.footnote)
                                                     .lineLimit(1)
                                                 Text("Show more")
                                                     .foregroundColor(.white)
@@ -219,7 +253,12 @@ struct ReelsPlayer : View {
                                         
                                     })
                                     Button(action: {
+                                        DispatchQueue.main.async {
+                                            player.pause()
+                                            reel.player?.pause()
+                                        }
                                         navToDetails = true
+                                        //pauseVideo = navToDetails
                                     }, label: {
                                         Text("Learn More")
                                             .font(.subheadline)
@@ -235,7 +274,7 @@ struct ReelsPlayer : View {
                                 
                             }
                         }
-                        ActionButtons(reel: reel)
+                        ActionButtons(navToDetails: $navToDetails, reel: reel)
                             .frame(height: 300)
                     }
                 }
@@ -260,45 +299,59 @@ struct ReelsPlayer : View {
     
 }
 struct ActionButtons : View {
+    @Binding var navToDetails : Bool
     var reel : Reel
     var body: some View{
         VStack(spacing: 25){
-            Button(action: {}, label: {
+            Button(action: {
+                DispatchQueue.main.async {
+                    reel.player?.pause()
+                }
+                navToDetails = true
+            }, label: {
                 VStack(spacing : 10){
                     if let url = URL(string: reel.business.businessImg){
                         URLImage(url) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 45, height: 45, alignment: .center)
+                                .frame(width: 30, height: 30, alignment: .center)
                                 .foregroundColor(.white)
                                 .font(.system(size: 16,weight: .thin))
                         }
-                        .frame(width: 50, height: 50, alignment: .center)
+                        .frame(width: 40, height: 40, alignment: .center)
+                        .background(Color.white)
                         .clipShape(Circle())
                         .background(Circle().stroke(Color.white,lineWidth: 1))
                     }
                     
                 }
+                
             })
-            Button(action: {}, label: {
-                VStack(spacing : 10){
-                    Image(systemName: "arrowshape.turn.up.right.fill")
-                        .renderingMode(.template)
-                        .foregroundColor(.white)
-                        .font(.title)
-                }
-            })
+//            Button(action: {}, label: {
+//                VStack(spacing : 10){
+//                    Image(systemName: "arrowshape.turn.up.right.fill")
+//                        .resizable()
+//                        .renderingMode(.template)
+//                        .foregroundColor(.white)
+//                        .font(.title)
+//                        .frame(width: 30, height: 30, alignment: .center)
+//                }
+//            })
         }
         .padding(.bottom)
     }
 }
 struct TabBarButton: View {
+    @AppStorage("pauseVideo") var pauseVideo = Bool()
     var image : String
     @Binding var currentTab : String
     var body: some View{
         Button(action: {
             withAnimation {
+                if image != "house.fill"{
+                   // pauseVideo = true
+                }
                 currentTab = image
             }
         }, label: {
@@ -319,7 +372,6 @@ struct HomeViewF: View {
     @State var filteredbusiness = [Business]()
     @Binding var categories : [Category]
     @Binding var recommendedBusiness : [Business]
-    @Binding var selectedCategory : String?
     @State var navToCatList = false
     @State var playVidoes = false
     @State var data = [Video]()

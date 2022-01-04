@@ -26,6 +26,7 @@ extension Image{
     static let pin = Image(systemName: "ellipsis.rectangle")
     static let checkMark = Image(systemName : "checkmark.circle.fill")
     static let home = Image(systemName : "house")
+    static let checkMatk = Image(systemName: "checkmark.seal.fill")
     
     static let launchImage = Image("launchImage")
     static let logo = Image("logo")

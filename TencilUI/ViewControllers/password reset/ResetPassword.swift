@@ -23,10 +23,10 @@ struct ResetPassword: View {
                         Image.lockFill
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50, alignment: .center)
+                            .frame(width: geometry.size.width / 5, height: geometry.size.width / 5, alignment: .center)
                         Text(String.resetPassword.uppercased())
                             .foregroundColor(.black)
-                            .font(.system(size: 35 , weight: .bold))
+                            .font(.system(size: geometry.size.width / 15 , weight: .bold))
                             .padding([.horizontal,.top], 20)
                         Text(String.provideEmailAndNewPassword)
                             .foregroundColor(.gray)
@@ -52,7 +52,7 @@ struct ResetPassword: View {
                                 }
                             }
                         }, label: {
-                            CustomButton(width: UIScreen.main.bounds.width * 0.8, title: .resetPassword.uppercased())
+                            CustomButton(width: UIScreen.main.bounds.width * 0.8, height: geometry.size.width / 3, title: .resetPassword.uppercased())
                         })
                         .cornerRadius(25)
                         .padding()
@@ -63,11 +63,14 @@ struct ResetPassword: View {
                                             Button(action: {
                                                 showResetView = false
                                             }, label: {
-                                                Image.back
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 25, height: 25, alignment: .center)
+                                                HStack {
+                                                    Image.back
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                    .frame(width: 20, height: 20)
                                                     .foregroundColor(.black)
+                                                }
+                                                .frame(width: 45, height: 45)
                                             })
                                         
                 )
